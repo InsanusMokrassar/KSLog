@@ -1,6 +1,8 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package dev.inmo.kslog.common
 
-inline fun Logger.log(level: LogLevel, tag: String? = null, e: Throwable? = null, messageBuilder: () -> String) = log(level, messageBuilder(), tag, e)
+inline fun Logger.log(level: LogLevel, tag: String? = null, e: Throwable? = null, messageBuilder: () -> String) = invoke(level, tag, messageBuilder(), e)
 inline fun Logger.log(level: LogLevel, message: String, e: Throwable? = null) = log(level, null, e) { message }
 inline fun Logger.log(level: LogLevel, tag: String, message: String, e: Throwable? = null) = log(level, tag, e) { message }
 
@@ -35,6 +37,11 @@ inline fun Logger.debug(message: String, e: Throwable? = null) = log(LogLevel.DE
 inline fun Logger.debug(tag: String, message: String, e: Throwable? = null) = log(LogLevel.DEBUG, tag, message, e)
 
 // ----- Short names
+
+
+inline fun Logger.l(level: LogLevel, tag: String? = null, e: Throwable? = null, messageBuilder: () -> String) = log(level, tag, e, messageBuilder)
+inline fun Logger.l(level: LogLevel, message: String, e: Throwable? = null) = log(level, message, e)
+inline fun Logger.l(level: LogLevel, tag: String, message: String, e: Throwable? = null) = log(level, tag, message, e)
 
 inline fun Logger.v(tag: String? = null, e: Throwable? = null, messageBuilder: () -> String) = verbose(tag, e, messageBuilder)
 inline fun Logger.v(message: String, e: Throwable? = null) = verbose(message, e)

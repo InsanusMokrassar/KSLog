@@ -11,10 +11,10 @@ enum class LogLevel {
 }
 
 interface Logger {
-    fun log (level: LogLevel, message: String, tag: String? = null, throwable: Throwable? = null)
+    operator fun invoke(level: LogLevel, tag: String?, message: String, throwable: Throwable?)
     companion object : Logger {
         var DEFAULT: Logger = Logger("app")
-        override fun log(level: LogLevel, message: String, tag: String?, throwable: Throwable?) = DEFAULT.log(level, message, tag, throwable)
+        override fun invoke(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = DEFAULT(level, tag, message, throwable)
 
         operator fun invoke (log: (level: LogLevel, message: String, tag: String?, throwable: Throwable?) -> Unit) = CallbackLogger(log)
     }
@@ -23,7 +23,7 @@ interface Logger {
 class CallbackLogger(
     private val logger: (level: LogLevel, message: String, tag: String?, throwable: Throwable?) -> Unit
 ) : Logger {
-    override fun log(level: LogLevel, message: String, tag: String?, throwable: Throwable?) = logger(level, message, tag, throwable)
+    override fun invoke(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = logger(level, message, tag, throwable)
 }
 
 
