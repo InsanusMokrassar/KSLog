@@ -59,5 +59,6 @@ java {
 
 apply from: "defaultAndroidSettings.gradle"
 
-apply from: "./github_release.gradle"
-apply from: "./publish.gradle"
+apply from: "github_release.gradle"
+apply from: "publish.gradle"
+apply from: "dokka.gradle"

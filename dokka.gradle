@@ -1,0 +1,25 @@
+Object callback = {
+    switch (true) {
+        case project.hasProperty("DOKKA_PATH"):
+            outputDirectory = project.property("DOKKA_PATH").toString()
+            break
+        case System.getenv("DOKKA_PATH") != null:
+            outputDirectory = System.getenv("DOKKA_PATH")
+            break
+    }
+
+    dokkaSourceSets {
+        configureEach {
+            skipDeprecated.set(true)
+
+            sourceLink {
+                localDirectory.set(file("./"))
+                remoteUrl.set(new URL("https://github.com/InsanusMokrassar/KSLog/blob/master/"))
+                remoteLineSuffix.set("#L")
+            }
+        }
+    }
+}
+
+tasks.dokkaGfm(callback)
+tasks.dokkaHtml(callback)
