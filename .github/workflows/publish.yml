@@ -1,0 +1,27 @@
+name: Publish package to GitHub Packages
+on: [push]
+jobs:
+  publishing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Fix android 32.0.0 dx
+        continue-on-error: true
+        run: cd /usr/local/lib/android/sdk/build-tools/32.0.0/ && mv d8 dx && cd lib  && mv d8.jar dx.jar
+      - name: Rewrite version
+        run: |
+          branch="`echo "${{ github.ref }}" | grep -o "[^/]*$"`"
+          cat gradle.properties | sed -e "s/^version=\([0-9\.]*\)/version=\1-branch_$branch-build${{ github.run_number }}/" > gradle.properties.tmp
+          rm gradle.properties
+          mv gradle.properties.tmp gradle.properties
+      - name: Build
+        run: ./gradlew build
+      - name: Publish
+        continue-on-error: true
+        run: ./gradlew --no-parallel publishAllPublicationsToGithubPackagesRepository
+        env:
+          GITHUBPACKAGES_USER: ${{ github.actor }}
+          GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
