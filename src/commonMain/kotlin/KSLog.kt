@@ -44,7 +44,14 @@ expect fun KSLog(
 
 fun KSLog(
     defaultTag: String,
-    levels: Set<LogLevel> = LogLevel.values().toSet()
+    levels: Set<LogLevel>
 ): KSLog = KSLog (defaultTag) { l, _, _, _ ->
     l in levels
+}
+
+fun KSLog(
+    defaultTag: String,
+    minLoggingLevel: LogLevel = LogLevel.VERBOSE
+): KSLog = KSLog (defaultTag) { l, _, _, _ ->
+    minLoggingLevel.ordinal <= l.ordinal
 }
