@@ -1,4 +1,4 @@
-package truth.simple.kmp.logger.common
+package dev.inmo.kslog.common
 
 import java.util.logging.Level
 

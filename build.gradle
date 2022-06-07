@@ -10,18 +10,76 @@ buildscript {
         classpath libs.android.tools.build
         classpath libs.android.dexcount
         classpath libs.kotlin.gradle.plugin
-        classpath libs.kotlin.serialization.plugin
         classpath libs.kotlin.dokka.plugin
     }
 }
 
-allprojects {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        google()
+
+plugins {
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.dokka)
+}
+
+apply plugin: "com.android.library"
+
+project.version = "$version"
+project.group = "$group"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    google()
+}
+
+kotlin {
+    jvm()
+    js (IR) {
+        browser()
+        nodejs()
+    }
+    android {
+        publishAllLibraryVariants()
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation libs.kotlin
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation libs.kotlin.test.common
+                implementation libs.kotlin.test.annotations.common
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation libs.kotlin.test.junit
+            }
+        }
+        jsTest {
+            dependencies {
+                implementation libs.kotlin.test.js
+                implementation libs.kotlin.test.junit
+            }
+        }
+        androidTest {
+            dependencies {
+                implementation libs.kotlin.test.junit
+                implementation libs.android.test.junit
+                implementation libs.android.test.espresso.core
+            }
+        }
     }
 }
 
-apply from: "./extensions.gradle"
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
+apply from: "defaultAndroidSettings.gradle"
+
 // apply from: "./github_release.gradle"

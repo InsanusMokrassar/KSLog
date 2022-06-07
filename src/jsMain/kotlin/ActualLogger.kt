@@ -1,4 +1,4 @@
-package truth.simple.kmp.logger.common
+package dev.inmo.kslog.common
 
 fun Logger(
     messageFormatter: (l: LogLevel, m: String, t: String?, Throwable?) -> String,
