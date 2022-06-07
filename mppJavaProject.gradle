@@ -1,0 +1,34 @@
+project.version = "$version"
+project.group = "$group"
+
+// apply from: "$publishGradlePath"
+
+kotlin {
+    jvm()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation libs.kotlin
+                api libs.kotlin.serialization
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation libs.kotlin.test.common
+                implementation libs.kotlin.test.annotations.common
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation libs.kotlin.test.junit
+            }
+        }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}

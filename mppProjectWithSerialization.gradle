@@ -1,0 +1,56 @@
+project.version = "$version"
+project.group = "$group"
+
+// apply from: "$publishGradlePath"
+
+kotlin {
+    jvm()
+    js (IR) {
+        browser()
+        nodejs()
+    }
+    android {
+        publishAllLibraryVariants()
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation libs.kotlin
+                api libs.kotlin.serialization
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation libs.kotlin.test.common
+                implementation libs.kotlin.test.annotations.common
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation libs.kotlin.test.junit
+            }
+        }
+        jsTest {
+            dependencies {
+                implementation libs.kotlin.test.js
+                implementation libs.kotlin.test.junit
+            }
+        }
+        androidTest {
+            dependencies {
+                implementation libs.kotlin.test.junit
+                implementation libs.android.test.junit
+                implementation libs.android.test.espresso.core
+            }
+        }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
+apply from: "$defaultAndroidSettingsPresetPath"

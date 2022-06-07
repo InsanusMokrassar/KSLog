@@ -1,0 +1,25 @@
+allprojects {
+    ext {
+        projectByName = { String name ->
+            for (subproject in rootProject.subprojects) {
+                if (subproject.name == name) {
+                    return subproject
+                }
+            }
+            return null
+        }
+
+        internalProject = { String name ->
+            projectByName(name)
+        }
+
+        mppProjectWithSerializationPresetPath = "${rootProject.projectDir.absolutePath}/mppProjectWithSerialization.gradle"
+        mppJavaProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppJavaProject.gradle"
+        mppJsProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppJsProject.gradle"
+        mppAndroidProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppAndroidProject.gradle"
+
+        defaultAndroidSettingsPresetPath = "${rootProject.projectDir.absolutePath}/defaultAndroidSettings.gradle"
+
+        // publishGradlePath = "${rootProject.projectDir.absolutePath}/publish.gradle"
+    }
+}

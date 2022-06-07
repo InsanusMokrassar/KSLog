@@ -1,0 +1,17 @@
+.idea
+out/*
+*.iml
+target
+
+settings.xml
+
+.gradle/
+build/
+out/
+
+secret.gradle
+local.*
+local/
+kotlin-js-store/
+
+publishing.sh
