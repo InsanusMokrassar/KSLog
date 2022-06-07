@@ -14,7 +14,7 @@ interface KSLog {
     fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?)
     companion object : KSLog {
         private var defaultLogger: KSLog? = null
-        var DEFAULT: KSLog
+        var default: KSLog
             get() {
                 return defaultLogger ?: KSLog("app").also {
                     defaultLogger = it
@@ -23,7 +23,7 @@ interface KSLog {
             set(value) {
                 defaultLogger = value
             }
-        override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = DEFAULT.performLog(level, tag, message, throwable)
+        override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = default.performLog(level, tag, message, throwable)
     }
 }
 

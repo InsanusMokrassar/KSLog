@@ -6,13 +6,16 @@ fun KSLog(
 ) = KSLog { l, t, m, e ->
     if (!filter(l, t, m, e)) return@KSLog
     val text = messageFormatter(l,t,m,e)
+    val args = e ?.let {
+        arrayOf(text, e)
+    } ?: arrayOf(text)
     when (l) {
         LogLevel.VERBOSE,
-        LogLevel.INFO -> console.info(text, e)
-        LogLevel.WARNING -> console.warn(text, e)
+        LogLevel.INFO -> console.info(*args)
+        LogLevel.WARNING -> console.warn(*args)
         LogLevel.ERROR,
-        LogLevel.ASSERT -> console.error(text, e)
-        LogLevel.DEBUG -> console.log(text, e)
+        LogLevel.ASSERT -> console.error(*args)
+        LogLevel.DEBUG -> console.log(*args)
     }
 }
 
