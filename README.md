@@ -4,6 +4,9 @@
 ![Android](https://img.shields.io/badge/Android-green?style=for-the-badge&logo=android&logoColor=white)
 ![Js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
+[![KDocs](https://img.shields.io/badge/KDocs-323330?style=for-the-badge&logo=Kotlin&logoColor=7F52FF)](https://insanusmokrassar.github.io/KSLog/)
+[![Tutorials](https://img.shields.io/badge/Tutorials-0288D1?style=for-the-badge&logo=bookstack&logoColor=white)](https://insanusmokrassar.github.io/KSLog/)
+
 It is simple logging tool which is using built-in tools for logging:
 
 * `java.util.logging.Logger` for `JVM`
