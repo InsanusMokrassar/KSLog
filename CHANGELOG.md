@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3
+
+* Fixes in `JVM` logging
+
 ## 0.0.2
 
 * New logger `TagLogger` and now extension `Any#logger` will use it to decrease objects allocations
