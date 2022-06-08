@@ -37,10 +37,14 @@ class CallbackKSLog(
 }
 
 
-expect fun KSLog(
+fun KSLog(
     defaultTag: String,
     filter: (l: LogLevel, t: String, m: String, Throwable?) -> Boolean
-) : KSLog
+) : KSLog = KSLog { l, t, m, e ->
+    if (filter(l, t ?: defaultTag, m, e)) {
+        KSLog.default.performLog(l, t ?: defaultTag, m, e)
+    }
+}
 
 fun KSLog(
     defaultTag: String,
@@ -52,7 +56,7 @@ fun KSLog(
     }
 }
 
-inline fun KSLog(
+fun KSLog(
     defaultTag: String,
     firstLevel: LogLevel,
     secondLevel: LogLevel,
