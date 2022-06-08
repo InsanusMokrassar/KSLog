@@ -3,10 +3,11 @@ $dokka.linkExtension:html
 $dokka.location:dev.inmo.kslog.common////PointingToDeclaration/kslog/dev.inmo.kslog.common/index.html
 $dokka.location:dev.inmo.kslog.common//KSLog/#java.util.logging.Logger#kotlin.Function4[dev.inmo.kslog.common.LogLevel,kotlin.String?,kotlin.String,kotlin.Throwable?,kotlin.Boolean]#kotlin.Function4[dev.inmo.kslog.common.LogLevel,kotlin.String?,kotlin.String,kotlin.Throwable?,kotlin.String]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
 $dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.Function4[dev.inmo.kslog.common.LogLevel,kotlin.String?,kotlin.String,kotlin.Throwable?,kotlin.String]#kotlin.Function4[dev.inmo.kslog.common.LogLevel,kotlin.String?,kotlin.String,kotlin.Throwable?,kotlin.Boolean]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
+$dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.String#dev.inmo.kslog.common.LogLevel#dev.inmo.kslog.common.LogLevel#kotlin.Array[dev.inmo.kslog.common.LogLevel]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
 $dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.String#dev.inmo.kslog.common.LogLevel/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
 $dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.String#java.util.logging.Logger#kotlin.Function4[dev.inmo.kslog.common.LogLevel,kotlin.String,kotlin.String,kotlin.Throwable?,kotlin.Boolean]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
 $dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.String#kotlin.Function4[dev.inmo.kslog.common.LogLevel,kotlin.String,kotlin.String,kotlin.Throwable?,kotlin.Boolean]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
-$dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.String#kotlin.collections.Set[dev.inmo.kslog.common.LogLevel]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
+$dokka.location:dev.inmo.kslog.common//KSLog/#kotlin.String#kotlin.collections.Iterable[dev.inmo.kslog.common.LogLevel]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log.html
 $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin.String#kotlin.String#kotlin.Throwable?/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
 $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin.String#kotlin.Throwable?/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
 $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin.String?#kotlin.Throwable?#kotlin.Function0[kotlin.String]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
@@ -67,5 +68,9 @@ $dokka.location:dev.inmo.kslog.common/LogLevel.INFO///PointingToDeclaration/{"or
 $dokka.location:dev.inmo.kslog.common/LogLevel.VERBOSE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}kslog/dev.inmo.kslog.common/-log-level/-v-e-r-b-o-s-e/index.html
 $dokka.location:dev.inmo.kslog.common/LogLevel.WARNING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}kslog/dev.inmo.kslog.common/-log-level/-w-a-r-n-i-n-g/index.html
 $dokka.location:dev.inmo.kslog.common/LogLevel///PointingToDeclaration/kslog/dev.inmo.kslog.common/-log-level/index.html
+$dokka.location:dev.inmo.kslog.common/TagLogger///PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/index.html
+$dokka.location:dev.inmo.kslog.common/TagLogger/TagLogger/#kotlin.String/PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/-tag-logger.html
+$dokka.location:dev.inmo.kslog.common/TagLogger/performLog/#dev.inmo.kslog.common.LogLevel#kotlin.String?#kotlin.String#kotlin.Throwable?/PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/perform-log.html
+$dokka.location:dev.inmo.kslog.common/TagLogger/tag/#/PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/tag.html
 dev.inmo.kslog.common
 
