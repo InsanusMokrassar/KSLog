@@ -52,6 +52,13 @@ fun KSLog(
     }
 }
 
+inline fun KSLog(
+    defaultTag: String,
+    firstLevel: LogLevel,
+    secondLevel: LogLevel,
+    vararg otherLevels: LogLevel
+): KSLog = KSLog(defaultTag, setOf(firstLevel, secondLevel, *otherLevels))
+
 fun KSLog(
     defaultTag: String,
     minLoggingLevel: LogLevel = LogLevel.VERBOSE
