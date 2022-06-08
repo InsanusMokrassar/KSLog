@@ -12,12 +12,12 @@ fun KSJVMLog(
     val text = messageFormatter(l,t ?: defaultTag,m,e)
     logger.log(
         when(l) {
-            LogLevel.VERBOSE -> Level.FINEST
+            LogLevel.DEBUG -> Level.ALL
+            LogLevel.VERBOSE -> Level.FINE
             LogLevel.INFO -> Level.INFO
             LogLevel.WARNING -> Level.WARNING
             LogLevel.ERROR -> Level.SEVERE
-            LogLevel.ASSERT -> Level.OFF
-            LogLevel.DEBUG -> Level.ALL
+            LogLevel.ASSERT -> Level.SEVERE
         },
         text,
         e
