@@ -2,6 +2,9 @@
 
 ## 0.1.1
 
+* Changes in `JVM` levels
+* Fixes in TagLogger
+
 ## 0.1.0
 
 * All the platform specific logged factories has been renamed
