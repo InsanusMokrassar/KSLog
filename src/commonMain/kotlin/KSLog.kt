@@ -44,10 +44,20 @@ expect fun KSLog(
 
 fun KSLog(
     defaultTag: String,
-    levels: Set<LogLevel>
-): KSLog = KSLog (defaultTag) { l, _, _, _ ->
-    l in levels
+    levels: Iterable<LogLevel>
+): KSLog {
+    val levels = levels.toSet()
+    return KSLog (defaultTag) { l, _, _, _ ->
+        l in levels
+    }
 }
+
+inline fun KSLog(
+    defaultTag: String,
+    firstLevel: LogLevel,
+    secondLevel: LogLevel,
+    vararg otherLevels: LogLevel
+): KSLog = KSLog(defaultTag, setOf(firstLevel, secondLevel, *otherLevels))
 
 fun KSLog(
     defaultTag: String,
