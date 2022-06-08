@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+* Full rewrite of API
+
 ## 0.1.1
 
 * Changes in `JVM` levels
