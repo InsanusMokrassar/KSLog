@@ -36,36 +36,39 @@ class CallbackKSLog(
     override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = performLogCallback(level, tag, message, throwable)
 }
 
+expect fun KSLog(
+    defaultTag: String,
+    filter: MessageFilter = { _, _, _, _ -> true },
+    messageFormatter: MessageFormatter = defaultMessageFormatter
+): KSLog
 
 fun KSLog(
     defaultTag: String,
-    filter: (l: LogLevel, t: String, m: String, Throwable?) -> Boolean
-) : KSLog = KSLog { l, t, m, e ->
-    if (filter(l, t ?: defaultTag, m, e)) {
-        KSLog.default.performLog(l, t ?: defaultTag, m, e)
-    }
-}
-
-fun KSLog(
-    defaultTag: String,
-    levels: Iterable<LogLevel>
+    levels: Iterable<LogLevel>,
+    messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
     val levels = levels.toSet()
-    return KSLog (defaultTag) { l, _, _, _ ->
+    return KSLog (defaultTag, { l, _, _, _ ->
         l in levels
-    }
+    }, messageFormatter)
 }
 
 fun KSLog(
     defaultTag: String,
     firstLevel: LogLevel,
     secondLevel: LogLevel,
-    vararg otherLevels: LogLevel
-): KSLog = KSLog(defaultTag, setOf(firstLevel, secondLevel, *otherLevels))
+    vararg otherLevels: LogLevel,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+): KSLog = KSLog(defaultTag, setOf(firstLevel, secondLevel, *otherLevels), messageFormatter)
 
 fun KSLog(
     defaultTag: String,
-    minLoggingLevel: LogLevel = LogLevel.values().first()
-): KSLog = KSLog (defaultTag) { l, _, _, _ ->
-    minLoggingLevel.ordinal <= l.ordinal
-}
+    minLoggingLevel: LogLevel,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+): KSLog = KSLog (
+    defaultTag,
+    { l, _, _, _ ->
+        minLoggingLevel.ordinal <= l.ordinal
+    },
+    messageFormatter
+)
