@@ -11,12 +11,12 @@ fun KSJSLog(
         arrayOf(text, e)
     } ?: arrayOf(text)
     when (l) {
+        LogLevel.DEBUG -> console.log(*args)
         LogLevel.VERBOSE,
         LogLevel.INFO -> console.info(*args)
         LogLevel.WARNING -> console.warn(*args)
         LogLevel.ERROR,
         LogLevel.ASSERT -> console.error(*args)
-        LogLevel.DEBUG -> console.log(*args)
     }
 }
 
@@ -42,7 +42,7 @@ fun KSJSLog(
 fun KSJSLog(
     defaultTag: String,
     messageFormatter: MessageFormatter = defaultMessageFormatter,
-    minLoggingLevel: LogLevel = LogLevel.VERBOSE
+    minLoggingLevel: LogLevel = LogLevel.values().first()
 ): KSLog = KSJSLog (defaultTag, messageFormatter) { l, _, _, _ ->
     minLoggingLevel.ordinal <= l.ordinal
 }

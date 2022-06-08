@@ -49,7 +49,7 @@ fun KSJVMLog(
     defaultTag: String,
     logger: java.util.logging.Logger,
     messageFormatter: MessageFormatter = defaultMessageFormatter,
-    minLoggingLevel: LogLevel = LogLevel.VERBOSE
+    minLoggingLevel: LogLevel = LogLevel.values().first()
 ): KSLog = KSJVMLog (defaultTag, logger, messageFormatter) { l, _, _, _ ->
     minLoggingLevel.ordinal <= l.ordinal
 }

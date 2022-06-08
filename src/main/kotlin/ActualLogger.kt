@@ -9,12 +9,12 @@ fun KSAndroidLog(
     if (!filter(l, t ?: defaultTag, m, e)) return@KSLog
     val tag = t ?: defaultTag
     when(l) {
+        LogLevel.DEBUG -> Log.d(tag, m, e)
         LogLevel.VERBOSE -> Log.v(tag, m, e)
         LogLevel.INFO -> Log.i(tag, m, e)
         LogLevel.WARNING -> Log.w(tag, m, e)
         LogLevel.ERROR -> Log.e(tag, m, e)
         LogLevel.ASSERT -> Log.wtf(tag, m, e)
-        LogLevel.DEBUG -> Log.d(tag, m, e)
     }
 }
 
