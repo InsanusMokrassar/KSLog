@@ -3,6 +3,7 @@
 ## 0.0.2
 
 * New logger `TagLogger` and now extension `Any#logger` will use it to decrease objects allocations
+* Now it is possible to create `KSLog` using any iterable
 
 ## 0.0.1
 
