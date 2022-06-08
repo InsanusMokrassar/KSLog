@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0
+
+* All the platform specific logged factories has been renamed
+
 ## 0.0.3
 
 * Fixes in `JVM` logging

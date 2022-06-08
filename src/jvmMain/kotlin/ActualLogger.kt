@@ -2,13 +2,14 @@ package dev.inmo.kslog.common
 
 import java.util.logging.Level
 
-fun KSLog(
+fun KSJVMLog(
+    defaultTag: String,
     logger: java.util.logging.Logger,
-    filter: (l: LogLevel, t: String?, m: String, Throwable?) -> Boolean,
-    messageFormatter: (l: LogLevel, t: String?, m: String, Throwable?) -> String
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    filter: (l: LogLevel, t: String?, m: String, Throwable?) -> Boolean
 ) = KSLog { l, t, m, e ->
     if (!filter(l, t, m, e)) return@KSLog
-    val text = messageFormatter(l,t,m,e)
+    val text = messageFormatter(l,t ?: defaultTag,m,e)
     logger.log(
         when(l) {
             LogLevel.VERBOSE -> Level.FINEST
@@ -23,24 +24,32 @@ fun KSLog(
     )
 }
 
-fun KSLog(
+fun KSJVMLog(
     defaultTag: String,
     logger: java.util.logging.Logger,
-    filter: (l: LogLevel, t: String, m: String, Throwable?) -> Boolean = { _, _, _, _ -> true }
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    levels: Iterable<LogLevel>
 ): KSLog {
-    return KSLog(
-        logger,
-        { l, t, m, e -> filter(l, t ?: defaultTag, m, e) }
-    ) { _, t, m, _ -> "${t ?: defaultTag} - $m" }
+    val levels = levels.toSet()
+    return KSJVMLog (defaultTag, logger, messageFormatter) { l, _, _, _ ->
+        l in levels
+    }
 }
 
-actual fun KSLog(
+fun KSJVMLog(
     defaultTag: String,
-    filter: (l: LogLevel, t: String, m: String, Throwable?) -> Boolean
-): KSLog {
-    return KSLog(
-        defaultTag,
-        logger = java.util.logging.Logger.getAnonymousLogger(),
-        filter = { l, t, m, e -> filter(l, t, m, e) }
-    )
+    logger: java.util.logging.Logger,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    firstLevel: LogLevel,
+    secondLevel: LogLevel,
+    vararg otherLevels: LogLevel
+): KSLog = KSJVMLog (defaultTag, logger, messageFormatter, setOf(firstLevel, secondLevel, *otherLevels))
+
+fun KSJVMLog(
+    defaultTag: String,
+    logger: java.util.logging.Logger,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    minLoggingLevel: LogLevel = LogLevel.VERBOSE
+): KSLog = KSJVMLog (defaultTag, logger, messageFormatter) { l, _, _, _ ->
+    minLoggingLevel.ordinal <= l.ordinal
 }

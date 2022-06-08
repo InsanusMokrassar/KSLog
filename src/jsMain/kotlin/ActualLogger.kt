@@ -1,11 +1,12 @@
 package dev.inmo.kslog.common
 
-fun KSLog(
-    messageFormatter: (l: LogLevel, t: String?, m: String, Throwable?) -> String,
+fun KSJSLog(
+    defaultTag: String,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
     filter: (l: LogLevel, t: String?, m: String, Throwable?) -> Boolean
 ) = KSLog { l, t, m, e ->
     if (!filter(l, t, m, e)) return@KSLog
-    val text = messageFormatter(l,t,m,e)
+    val text = messageFormatter(l, t?:defaultTag, m, e)
     val args = e ?.let {
         arrayOf(text, e)
     } ?: arrayOf(text)
@@ -19,12 +20,29 @@ fun KSLog(
     }
 }
 
-actual fun KSLog(
+fun KSJSLog(
     defaultTag: String,
-    filter: (l: LogLevel, t: String, m: String, Throwable?) -> Boolean
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    levels: Iterable<LogLevel>
 ): KSLog {
-    return KSLog(
-        { l, t, m, _ -> "[$l] ${t ?: defaultTag} - $m" },
-        { l, t, m, e -> filter(l, t ?: defaultTag, m, e) }
-    )
+    val levels = levels.toSet()
+    return KSJSLog (defaultTag, messageFormatter) { l, _, _, _ ->
+        l in levels
+    }
+}
+
+fun KSJSLog(
+    defaultTag: String,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    firstLevel: LogLevel,
+    secondLevel: LogLevel,
+    vararg otherLevels: LogLevel
+): KSLog = KSJSLog (defaultTag, messageFormatter, setOf(firstLevel, secondLevel, *otherLevels))
+
+fun KSJSLog(
+    defaultTag: String,
+    messageFormatter: MessageFormatter = defaultMessageFormatter,
+    minLoggingLevel: LogLevel = LogLevel.VERBOSE
+): KSLog = KSJSLog (defaultTag, messageFormatter) { l, _, _, _ ->
+    minLoggingLevel.ordinal <= l.ordinal
 }
