@@ -2,12 +2,12 @@ package dev.inmo.kslog.common
 
 
 enum class LogLevel {
+    DEBUG,
     VERBOSE,
     INFO,
     WARNING,
     ERROR,
     ASSERT,
-    DEBUG
 }
 
 interface KSLog {
@@ -65,7 +65,7 @@ fun KSLog(
 
 fun KSLog(
     defaultTag: String,
-    minLoggingLevel: LogLevel = LogLevel.VERBOSE
+    minLoggingLevel: LogLevel = LogLevel.values().first()
 ): KSLog = KSLog (defaultTag) { l, _, _, _ ->
     minLoggingLevel.ordinal <= l.ordinal
 }
