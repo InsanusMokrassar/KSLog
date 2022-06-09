@@ -1,15 +1,9 @@
 package dev.inmo.kslog.common
 
-actual fun KSLog(
-    defaultTag: String,
-    filter: MessageFilter,
-    messageFormatter: MessageFormatter
-): KSLog = KSLog { l, t, m, e ->
-    if (!filter(l, t, m, e)) return@KSLog
-    val text = messageFormatter(l, t?:defaultTag, m, e)
+internal actual val defaultLogging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit = { l, t, m, e ->
     val args = e ?.let {
-        arrayOf(text, e)
-    } ?: arrayOf(text)
+        arrayOf(m, e)
+    } ?: arrayOf(m)
     when (l) {
         LogLevel.DEBUG -> console.log(*args)
         LogLevel.VERBOSE,
