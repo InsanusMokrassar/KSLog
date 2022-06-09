@@ -19,7 +19,7 @@ interface KSLog {
         throwable: Throwable?,
         messageBuilder: () -> String
     ) = performLog(level, tag, messageBuilder(), throwable)
-    suspend fun performLog(
+    suspend fun performLogS(
         level: LogLevel,
         tag: String?,
         throwable: Throwable?,
@@ -37,17 +37,36 @@ interface KSLog {
                 defaultLogger = value
             }
         override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = default.performLog(level, tag, message, throwable)
+        override fun performLog(level: LogLevel, message: String, throwable: Throwable?) = default.performLog(level, message, throwable)
+        override fun performLog(
+            level: LogLevel,
+            tag: String?,
+            throwable: Throwable?,
+            messageBuilder: () -> String
+        ) = default.performLog(level, tag, throwable, messageBuilder)
+        override suspend fun performLogS(
+            level: LogLevel,
+            tag: String?,
+            throwable: Throwable?,
+            messageBuilder: suspend () -> String
+        ) = default.performLogS(level, tag, throwable, messageBuilder)
     }
 }
 
 
 operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: String, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
 
-expect fun KSLog(
+internal expect val defaultLogging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit
+
+fun KSLog(
     defaultTag: String,
-    filter: MessageFilter = { _, _, _, _ -> true },
+    filter: MessageFilter = { _, _, _ -> true },
     messageFormatter: MessageFormatter = defaultMessageFormatter
-): KSLog
+): KSLog = DefaultKSLog(
+    defaultTag,
+    filter,
+    messageFormatter
+)
 
 fun KSLog(
     defaultTag: String,
@@ -55,7 +74,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
     val levels = levels.toSet()
-    return KSLog (defaultTag, { l, _, _, _ ->
+    return KSLog (defaultTag, { l, _, _ ->
         l in levels
     }, messageFormatter)
 }
@@ -74,7 +93,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter,
 ): KSLog = KSLog (
     defaultTag,
-    { l, _, _, _ ->
+    { l, _, _ ->
         minLoggingLevel.ordinal <= l.ordinal
     },
     messageFormatter
