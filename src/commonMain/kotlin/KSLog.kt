@@ -12,6 +12,19 @@ enum class LogLevel {
 
 interface KSLog {
     fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?)
+    fun performLog(level: LogLevel, message: String, throwable: Throwable?) = performLog(level, null, message, throwable)
+    fun performLog(
+        level: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        messageBuilder: () -> String
+    ) = performLog(level, tag, messageBuilder(), throwable)
+    suspend fun performLog(
+        level: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        messageBuilder: suspend () -> String
+    ) = performLog(level, tag, messageBuilder(), throwable)
     companion object : KSLog {
         private var defaultLogger: KSLog? = null
         var default: KSLog
@@ -29,12 +42,6 @@ interface KSLog {
 
 
 operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: String, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
-
-class CallbackKSLog(
-    private val performLogCallback: (level: LogLevel, tag: String?, message: String, throwable: Throwable?) -> Unit
-) : KSLog {
-    override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = performLogCallback(level, tag, message, throwable)
-}
 
 expect fun KSLog(
     defaultTag: String,
