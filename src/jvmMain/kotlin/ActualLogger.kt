@@ -42,9 +42,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
     val levels = levels.toSet()
-    return KSLog (defaultTag, logger, { l, _, _ ->
-        l in levels
-    }, messageFormatter)
+    return KSLog (defaultTag, logger, { l, _, _ -> l in levels }, messageFormatter)
 }
 
 fun KSLog(
@@ -61,6 +59,4 @@ fun KSLog(
     logger: Logger,
     minLoggingLevel: LogLevel = LogLevel.values().first(),
     messageFormatter: MessageFormatter = defaultMessageFormatter
-): KSLog = KSLog (defaultTag, logger, { l, _, _ ->
-    minLoggingLevel.ordinal <= l.ordinal
-}, messageFormatter)
+): KSLog = KSLog (defaultTag, logger, { l, _, _ -> minLoggingLevel.ordinal <= l.ordinal }, messageFormatter)

@@ -2,6 +2,10 @@
 
 ## 0.3.0
 
+* **BREAKING CHANGE**: Filters will not accept message since this update
+* New `KSLog` realization `DefaultKSLog`
+* Now platforms realize their default loggers callbacks instead of `KSLog` factories
+
 ## 0.2.0
 
 * Full rewrite of API
