@@ -25,17 +25,25 @@ KSLog.i("Some message")
 KSLog.i("Some tag", "Some message")
 // OR
 KSLog.i("Some tag", "Some message", IllegalArgumentException("So, that is exception :)"))
+// OR
+KSLog.i("Some optional tag", Exception("Optional")) { "Lazy inited message" }
+// OR
+KSLog.iS("Some optional tag", Exception("Optional")) { "Lazy inited message for suspendable calculation of text" }
 // OR EVEN
 KSLog.l(LogLevel.INFO, "Some tag", "Some message", IllegalArgumentException("So, that is exception :)"))
+// OR
+KSLog.l(LogLevel.INFO, "Some optional tag", IllegalArgumentException("So, that is exception :)")) { "And lazily inited message" }
 ```
 
 ### A little bit deeper
 
-There are several important things in context of this library:
+There are several important "terms" in context of this library:
 
-* Default logger (available via `KSLog`)
+* Default logger (available via `KSLog.default`)
 * Local logger (can be created via `KSLog` functions and passed anywhere as `KSLog`)
 * Logging shortcuts like `KSLog.i`/`KSLog.info`
+
+Every logging extension (like `KSLog.i`) have its analog with lazy inited message text and the same one with suffix `S` (like `KSLog.iS`) for the suspendable message calculation.
 
 Default logger can be created by passing `defaultTag` and one of variants log level filters: set or minimal loggable level. In `JVM` you also may setup any logger as base logger for default realizations of `KSLog`. Besides, you may use your own callback (on **any target platform**) as output of logging:
 
