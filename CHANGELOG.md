@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+* Technical fixes for compatibility with Java 8
+
 ## 0.3.0
 
 * **BREAKING CHANGE**: Filters will not accept message since this update
