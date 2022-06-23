@@ -2,6 +2,8 @@
 
 ## 0.3.2
 
+* Add duplication functions for all extensions which allow to send log without tag but with exception and message builder
+
 ## 0.3.1
 
 * Technical fixes for compatibility with Java 8
