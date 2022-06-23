@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.3.2
+
 ## 0.3.1
 
 * Technical fixes for compatibility with Java 8
