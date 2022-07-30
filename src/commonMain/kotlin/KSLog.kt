@@ -1,5 +1,7 @@
 package dev.inmo.kslog.common
 
+import dev.inmo.kslog.common.filter.filtered
+
 
 enum class LogLevel {
     DEBUG,
@@ -11,20 +13,22 @@ enum class LogLevel {
 }
 
 interface KSLog {
-    fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?)
-    fun performLog(level: LogLevel, message: String, throwable: Throwable?) = performLog(level, null, message, throwable)
+    fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?)
+    fun performLog(level: LogLevel, message: Any, throwable: Throwable?) = performLog(level, null, message, throwable)
     fun performLog(
         level: LogLevel,
         tag: String?,
         throwable: Throwable?,
-        messageBuilder: () -> String
+        messageBuilder: () -> Any
     ) = performLog(level, tag, messageBuilder(), throwable)
     suspend fun performLogS(
         level: LogLevel,
         tag: String?,
         throwable: Throwable?,
-        messageBuilder: suspend () -> String
+        messageBuilder: suspend () -> Any
     ) = performLog(level, tag, messageBuilder(), throwable)
+
+
     companion object : KSLog {
         private var defaultLogger: KSLog? = null
         var default: KSLog
@@ -36,31 +40,40 @@ interface KSLog {
             set(value) {
                 defaultLogger = value
             }
-        override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = default.performLog(level, tag, message, throwable)
-        override fun performLog(level: LogLevel, message: String, throwable: Throwable?) = default.performLog(level, message, throwable)
+        override fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?) = default.performLog(level, tag, message, throwable)
+        override fun performLog(level: LogLevel, message: Any, throwable: Throwable?) = default.performLog(level, message, throwable)
         override fun performLog(
             level: LogLevel,
             tag: String?,
             throwable: Throwable?,
-            messageBuilder: () -> String
+            messageBuilder: () -> Any
         ) = default.performLog(level, tag, throwable, messageBuilder)
         override suspend fun performLogS(
             level: LogLevel,
             tag: String?,
             throwable: Throwable?,
-            messageBuilder: suspend () -> String
+            messageBuilder: suspend () -> Any
         ) = default.performLogS(level, tag, throwable, messageBuilder)
     }
 }
 
 
-operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: String, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
+operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: Any, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
 
-internal expect val defaultLogging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit
+internal expect val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit
 
 fun KSLog(
     defaultTag: String,
-    filter: MessageFilter = { _, _, _ -> true },
+    messageFormatter: MessageFormatter = defaultMessageFormatter
+): KSLog = DefaultKSLog(
+    defaultTag,
+    messageFormatter
+)
+
+@Deprecated("Filtering should be replaced with FilterKSLog")
+fun KSLog(
+    defaultTag: String,
+    filter: MessageFilter,
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog = DefaultKSLog(
     defaultTag,
@@ -74,9 +87,9 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
     val levels = levels.toSet()
-    return KSLog (defaultTag, { l, _, _ ->
+    return KSLog (defaultTag, messageFormatter).filtered { l, _, _ ->
         l in levels
-    }, messageFormatter)
+    }
 }
 
 fun KSLog(
@@ -93,8 +106,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter,
 ): KSLog = KSLog (
     defaultTag,
-    { l, _, _ ->
-        minLoggingLevel.ordinal <= l.ordinal
-    },
     messageFormatter
-)
+).filtered { l, _, _ ->
+    minLoggingLevel.ordinal <= l.ordinal
+}

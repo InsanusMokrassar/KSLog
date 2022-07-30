@@ -4,7 +4,7 @@ import kotlin.jvm.JvmInline
 
 @JvmInline
 value class TagLogger(val tag: String) : KSLog {
-    override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
+    override fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?) {
         KSLog.performLog(level, tag ?: this.tag, message, throwable)
     }
 }

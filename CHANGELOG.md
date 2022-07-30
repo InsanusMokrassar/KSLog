@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* **BREAKING CHANGE** Any `KSLog` now accept any object. It was made to allow to work with structured logging
+* New factory for `TagLogger`: fun `taggedLogger`
+* New logger has been added: `TypedLogger`
+* New logger has been added: `FilterLogger`
+* **BREAKING CHANGE** Logger `DefaultKSLog` lost its constructor with `filter`. Currently, it is still available as factory function
+
 ## 0.3.2
 
 * Add duplication functions for all extensions which allow to send log without tag but with exception and message builder

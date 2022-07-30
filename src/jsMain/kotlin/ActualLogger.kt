@@ -1,6 +1,6 @@
 package dev.inmo.kslog.common
 
-internal actual val defaultLogging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit = { l, t, m, e ->
+internal actual val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = { l, t, m, e ->
     val args = e ?.let {
         arrayOf(m, e)
     } ?: arrayOf(m)
