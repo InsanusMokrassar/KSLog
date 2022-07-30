@@ -1,5 +1,6 @@
 package dev.inmo.kslog.common
 
+import dev.inmo.kslog.common.filter.filtered
 import java.util.logging.Level
 import java.util.logging.Logger
 
@@ -24,13 +25,23 @@ internal actual val defaultLogging: (level: LogLevel, tag: String, message: Any,
     defaultKSLogLogger.doLog(l, t, m.toString(), e)
 }
 
+@Deprecated("Filtering should be replaced with FilterKSLog")
 fun KSLog(
     defaultTag: String,
     logger: Logger,
-    filter: MessageFilter = { _, _, _ -> true },
+    filter: MessageFilter,
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ) = KSLog { l, t, m, e ->
     if (!filter(l, t, e)) return@KSLog
+    val text = messageFormatter(l,t ?: defaultTag,m.toString(),e)
+    logger.doLog(l, t ?: defaultTag, text, e)
+}
+
+fun KSLog(
+    defaultTag: String,
+    logger: Logger,
+    messageFormatter: MessageFormatter = defaultMessageFormatter
+) = KSLog { l, t, m, e ->
     val text = messageFormatter(l,t ?: defaultTag,m.toString(),e)
     logger.doLog(l, t ?: defaultTag, text, e)
 }
@@ -42,7 +53,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
     val levels = levels.toSet()
-    return KSLog (defaultTag, logger, { l, _, _ -> l in levels }, messageFormatter)
+    return KSLog (defaultTag, logger, messageFormatter).filtered { l, _, _ -> l in levels }
 }
 
 fun KSLog(
@@ -59,4 +70,4 @@ fun KSLog(
     logger: Logger,
     minLoggingLevel: LogLevel = LogLevel.values().first(),
     messageFormatter: MessageFormatter = defaultMessageFormatter
-): KSLog = KSLog (defaultTag, logger, { l, _, _ -> minLoggingLevel.ordinal <= l.ordinal }, messageFormatter)
+): KSLog = KSLog (defaultTag, logger, messageFormatter).filtered { l, _, _ -> minLoggingLevel.ordinal <= l.ordinal }

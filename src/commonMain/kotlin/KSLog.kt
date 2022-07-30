@@ -1,5 +1,7 @@
 package dev.inmo.kslog.common
 
+import dev.inmo.kslog.common.filter.filtered
+
 
 enum class LogLevel {
     DEBUG,
@@ -62,7 +64,16 @@ internal expect val defaultLogging: (level: LogLevel, tag: String, message: Any,
 
 fun KSLog(
     defaultTag: String,
-    filter: MessageFilter = { _, _, _ -> true },
+    messageFormatter: MessageFormatter = defaultMessageFormatter
+): KSLog = DefaultKSLog(
+    defaultTag,
+    messageFormatter
+)
+
+@Deprecated("Filtering should be replaced with FilterKSLog")
+fun KSLog(
+    defaultTag: String,
+    filter: MessageFilter,
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog = DefaultKSLog(
     defaultTag,
@@ -76,9 +87,9 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
     val levels = levels.toSet()
-    return KSLog (defaultTag, { l, _, _ ->
+    return KSLog (defaultTag, messageFormatter).filtered { l, _, _ ->
         l in levels
-    }, messageFormatter)
+    }
 }
 
 fun KSLog(
@@ -95,8 +106,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter,
 ): KSLog = KSLog (
     defaultTag,
-    { l, _, _ ->
-        minLoggingLevel.ordinal <= l.ordinal
-    },
     messageFormatter
-)
+).filtered { l, _, _ ->
+    minLoggingLevel.ordinal <= l.ordinal
+}

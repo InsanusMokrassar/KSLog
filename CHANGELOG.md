@@ -6,6 +6,9 @@
 
 * **BREAKING CHANGE** Any `KSLog` now accept any object. It was made to allow to work with structured logging
 * New factory for `TagLogger`: fun `taggedLogger`
+* New logger has been added: `TypedLogger`
+* New logger has been added: `FilterLogger`
+* **BREAKING CHANGE** Logger `DefaultKSLog` lost its constructor with `filter`. Currently, it is still available as factory function
 
 ## 0.3.2
 
