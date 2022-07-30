@@ -5,6 +5,7 @@
 **THIS UPDATE CONTAINS BREAKING CHANGES**
 
 * **BREAKING CHANGE** Any `KSLog` now accept any object. It was made to allow to work with structured logging
+* New factory for `TagLogger`: fun `taggedLogger`
 
 ## 0.3.2
 
