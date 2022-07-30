@@ -20,8 +20,8 @@ private fun Logger.doLog(
     m,
     e
 )
-internal actual val defaultLogging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit = { l, t, m, e ->
-    defaultKSLogLogger.doLog(l, t, m, e)
+internal actual val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = { l, t, m, e ->
+    defaultKSLogLogger.doLog(l, t, m.toString(), e)
 }
 
 fun KSLog(
@@ -31,7 +31,7 @@ fun KSLog(
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ) = KSLog { l, t, m, e ->
     if (!filter(l, t, e)) return@KSLog
-    val text = messageFormatter(l,t ?: defaultTag,m,e)
+    val text = messageFormatter(l,t ?: defaultTag,m.toString(),e)
     logger.doLog(l, t ?: defaultTag, text, e)
 }
 

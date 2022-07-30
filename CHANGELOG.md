@@ -2,6 +2,10 @@
 
 ## 0.4.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* **BREAKING CHANGE** Any `KSLog` now accept any object. It was made to allow to work with structured logging
+
 ## 0.3.2
 
 * Add duplication functions for all extensions which allow to send log without tag but with exception and message builder

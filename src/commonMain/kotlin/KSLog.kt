@@ -11,20 +11,22 @@ enum class LogLevel {
 }
 
 interface KSLog {
-    fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?)
-    fun performLog(level: LogLevel, message: String, throwable: Throwable?) = performLog(level, null, message, throwable)
+    fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?)
+    fun performLog(level: LogLevel, message: Any, throwable: Throwable?) = performLog(level, null, message, throwable)
     fun performLog(
         level: LogLevel,
         tag: String?,
         throwable: Throwable?,
-        messageBuilder: () -> String
+        messageBuilder: () -> Any
     ) = performLog(level, tag, messageBuilder(), throwable)
     suspend fun performLogS(
         level: LogLevel,
         tag: String?,
         throwable: Throwable?,
-        messageBuilder: suspend () -> String
+        messageBuilder: suspend () -> Any
     ) = performLog(level, tag, messageBuilder(), throwable)
+
+
     companion object : KSLog {
         private var defaultLogger: KSLog? = null
         var default: KSLog
@@ -36,27 +38,27 @@ interface KSLog {
             set(value) {
                 defaultLogger = value
             }
-        override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) = default.performLog(level, tag, message, throwable)
-        override fun performLog(level: LogLevel, message: String, throwable: Throwable?) = default.performLog(level, message, throwable)
+        override fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?) = default.performLog(level, tag, message, throwable)
+        override fun performLog(level: LogLevel, message: Any, throwable: Throwable?) = default.performLog(level, message, throwable)
         override fun performLog(
             level: LogLevel,
             tag: String?,
             throwable: Throwable?,
-            messageBuilder: () -> String
+            messageBuilder: () -> Any
         ) = default.performLog(level, tag, throwable, messageBuilder)
         override suspend fun performLogS(
             level: LogLevel,
             tag: String?,
             throwable: Throwable?,
-            messageBuilder: suspend () -> String
+            messageBuilder: suspend () -> Any
         ) = default.performLogS(level, tag, throwable, messageBuilder)
     }
 }
 
 
-operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: String, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
+operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: Any, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
 
-internal expect val defaultLogging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit
+internal expect val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit
 
 fun KSLog(
     defaultTag: String,

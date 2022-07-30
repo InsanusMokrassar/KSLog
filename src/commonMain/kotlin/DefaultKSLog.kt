@@ -4,9 +4,9 @@ class DefaultKSLog(
     private val defaultTag: String,
     val filter: MessageFilter = { _, _, _ -> true },
     private val messageFormatter: MessageFormatter = defaultMessageFormatter,
-    private val logging: (level: LogLevel, tag: String, message: String, throwable: Throwable?) -> Unit = defaultLogging
+    private val logging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = defaultLogging
 ) : KSLog {
-    override fun performLog(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
+    override fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?) {
         val tag = tag ?: defaultTag
 
         if (filter(level, tag, throwable)) {
@@ -15,7 +15,7 @@ class DefaultKSLog(
         }
     }
 
-    override fun performLog(level: LogLevel, tag: String?, throwable: Throwable?, messageBuilder: () -> String) {
+    override fun performLog(level: LogLevel, tag: String?, throwable: Throwable?, messageBuilder: () -> Any) {
         val tag = tag ?: defaultTag
 
         if (filter(level, tag, throwable)) {
@@ -28,7 +28,7 @@ class DefaultKSLog(
         level: LogLevel,
         tag: String?,
         throwable: Throwable?,
-        messageBuilder: suspend () -> String
+        messageBuilder: suspend () -> Any
     ) {
         val tag = tag ?: defaultTag
 
