@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.3.3
+
 ## 0.3.2
 
 * Add duplication functions for all extensions which allow to send log without tag but with exception and message builder
