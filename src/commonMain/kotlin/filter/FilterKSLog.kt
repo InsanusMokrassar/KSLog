@@ -2,7 +2,7 @@ package dev.inmo.kslog.common.filter
 
 import dev.inmo.kslog.common.*
 
-class FilterLogger(
+class FilterKSLog(
     private val fallbackLogger: KSLog,
     private val messageFilter: MessageFilter
 ) : KSLog {
@@ -30,7 +30,3 @@ class FilterLogger(
         }
     }
 }
-
-fun KSLog.filtered(
-    filter: MessageFilter
-) = FilterLogger(this, filter)
