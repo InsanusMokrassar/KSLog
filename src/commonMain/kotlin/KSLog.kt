@@ -110,3 +110,5 @@ fun KSLog(
 ).filtered { l, _, _ ->
     minLoggingLevel.ordinal <= l.ordinal
 }
+
+fun setDefaultKSLog(newDefault: KSLog) { KSLog.default = newDefault }

@@ -2,6 +2,9 @@
 
 ## 0.4.2
 
+* Add `setDefaultKSLog`
+* Add `plus` operation for two `KSLog` instances to call them both on each log performing
+
 ## 0.4.1
 
 * Fixes in resolution ambiguity for functions with messages
