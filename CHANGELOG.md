@@ -4,6 +4,7 @@
 
 * Add `setDefaultKSLog`
 * Add `plus` operation for two `KSLog` instances to call them both on each log performing
+* Add `KSLog` factory for simple creation of `CallbackKSLog`
 
 ## 0.4.1
 
