@@ -1,6 +1,7 @@
 package dev.inmo.kslog.common
 
 import dev.inmo.kslog.common.filter.filtered
+import dev.inmo.kslog.common.utils.plus
 
 
 enum class LogLevel {
@@ -112,3 +113,4 @@ fun KSLog(
 }
 
 fun setDefaultKSLog(newDefault: KSLog) { KSLog.default = newDefault }
+fun addDefaultKSLog(newDefault: KSLog) { KSLog.default = KSLog.default + newDefault }
