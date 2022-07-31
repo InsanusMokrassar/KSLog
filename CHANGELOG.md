@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2
+
+* Add `setDefaultKSLog` and `addDefaultKSLog`
+* Add `plus` operation for two `KSLog` instances to call them both on each log performing
+* Add `KSLog` factory for simple creation of `CallbackKSLog`
+* Add `MessageFormatter` factory
+
 ## 0.4.1
 
 * Fixes in resolution ambiguity for functions with messages
