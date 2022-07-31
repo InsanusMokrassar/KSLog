@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.4.2
+
 ## 0.4.1
 
 * Fixes in resolution ambiguity for functions with messages
