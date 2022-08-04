@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+* `Kotlin`: `1.7.10`
+
 ## 0.4.2
 
 * Add `setDefaultKSLog` and `addDefaultKSLog`
