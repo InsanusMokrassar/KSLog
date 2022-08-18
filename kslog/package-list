@@ -73,6 +73,7 @@ $dokka.location:dev.inmo.kslog.common//debugS/dev.inmo.kslog.common.KSLog#kotlin
 $dokka.location:dev.inmo.kslog.common//debugS/dev.inmo.kslog.common.KSLog#kotlin.String?#kotlin.Throwable?#kotlin.coroutines.SuspendFunction0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/debug-s.html
 $dokka.location:dev.inmo.kslog.common//debugS/dev.inmo.kslog.common.KSLog#kotlin.Throwable?#kotlin.coroutines.SuspendFunction0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/debug-s.html
 $dokka.location:dev.inmo.kslog.common//defaultMessageFormatter/#/PointingToDeclaration/kslog/dev.inmo.kslog.common/default-message-formatter.html
+$dokka.location:dev.inmo.kslog.common//defaultMessageFormatterWithErrorPrint/#/PointingToDeclaration/kslog/dev.inmo.kslog.common/default-message-formatter-with-error-print.html
 $dokka.location:dev.inmo.kslog.common//e/dev.inmo.kslog.common.KSLog#kotlin.Any#kotlin.Throwable?/PointingToDeclaration/kslog/dev.inmo.kslog.common/e.html
 $dokka.location:dev.inmo.kslog.common//e/dev.inmo.kslog.common.KSLog#kotlin.Any/PointingToDeclaration/kslog/dev.inmo.kslog.common/e.html
 $dokka.location:dev.inmo.kslog.common//e/dev.inmo.kslog.common.KSLog#kotlin.String#kotlin.Any#kotlin.Throwable?/PointingToDeclaration/kslog/dev.inmo.kslog.common/e.html
