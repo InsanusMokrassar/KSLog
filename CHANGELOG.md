@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+
+* New property `defaultMessageFormatterWithErrorPrint` for messages format with errors
+
 ## 0.5.0
 
 * `Kotlin`: `1.7.10`
