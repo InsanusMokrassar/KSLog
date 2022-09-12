@@ -62,6 +62,9 @@ interface KSLog {
 operator fun KSLog.invoke(performLogCallback: (level: LogLevel, tag: String?, message: Any, throwable: Throwable?) -> Unit) = CallbackKSLog(performLogCallback)
 
 internal expect val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit
+internal val printlnLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = { l, t, m, e ->
+    println(defaultMessageFormatter(l, t, m, e))
+}
 
 fun KSLog(
     defaultTag: String,

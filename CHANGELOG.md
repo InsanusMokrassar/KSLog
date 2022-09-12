@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.2
+
+* Add support of next platform:
+  * Linux ARM x64
+  * Linux ARM x32 HFP
+  * Linux x64
+  * WASM x32
+  * MinGW x64
+  * MinGW x86
+
 ## 0.5.1
 
 * New property `defaultMessageFormatterWithErrorPrint` for messages format with errors

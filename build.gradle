@@ -47,6 +47,12 @@ kotlin {
     android {
         publishAllLibraryVariants()
     }
+    linuxArm64()
+    linuxArm32Hfp()
+    linuxX64()
+    wasm32()
+    mingwX64()
+    mingwX86()
 
     sourceSets {
         commonMain {
