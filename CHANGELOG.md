@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.5.2
+
 ## 0.5.1
 
 * New property `defaultMessageFormatterWithErrorPrint` for messages format with errors
