@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.3
+
+* `Kotlin`: `1.7.20`
+
 ## 0.5.2
 
 * Add support of next platform:
