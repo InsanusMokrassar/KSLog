@@ -1,4 +1,6 @@
-# How to use
+# KSLog
+
+It is simple and easy-to-use tool for logging on the most popular platforms in Kotlin Multiplatform:
 
 ![JVM](https://img.shields.io/badge/JVM-red?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Android](https://img.shields.io/badge/Android-green?style=for-the-badge&logo=android&logoColor=white)
@@ -7,11 +9,21 @@
 [![KDocs](https://img.shields.io/badge/KDocs-323330?style=for-the-badge&logo=Kotlin&logoColor=7F52FF)](https://insanusmokrassar.github.io/KSLog/)
 [![Tutorials](https://img.shields.io/badge/Tutorials-0288D1?style=for-the-badge&logo=bookstack&logoColor=white)](https://bookstack.inmo.dev/books/kslog)
 
-It is simple logging tool which is using built-in tools for logging:
+By default, KSLog is using built-in tools for logging on each supported platform:
 
 * `java.util.logging.Logger` for `JVM`
 * `android.util.Log` for `Android`
 * `Console` for `JS`
+
+But you always may create your logger and customize as you wish:
+
+```kotlin
+KSLog.default = KSLog { level: LogLevel, tag: String?, message: Any, throwable: Throwable? ->
+    // do your logging
+}
+```
+
+**This library also supports native targets in experimental mode. By default all native targets will use simple printing in the console**
 
 ## How to use
 
@@ -39,9 +51,11 @@ KSLog.l(LogLevel.INFO, "Some optional tag", IllegalArgumentException("So, that i
 
 There are several important "terms" in context of this library:
 
-* Default logger (available via `KSLog.default`)
+* Default logger (available via `KSLog.default` or simply `KSLog`)
 * Local logger (can be created via `KSLog` functions and passed anywhere as `KSLog`)
 * Logging shortcuts like `KSLog.i`/`KSLog.info`
+* Built-in extension `Any.logger` which allow you to create logger binded to the default with the tag based on the class of receiver
+    * __Be careful with the receivers: if you will use some extension like `apply`, the receiver will be different with your class inside of that `apply`__
 
 Every logging extension (like `KSLog.i`) have its analog with lazy inited message text and the same one with suffix `S` (like `KSLog.iS`) for the suspendable message calculation.
 
