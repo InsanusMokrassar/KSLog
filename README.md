@@ -5,6 +5,9 @@ It is simple and easy-to-use tool for logging on the most popular platforms in K
 ![JVM](https://img.shields.io/badge/JVM-red?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Android](https://img.shields.io/badge/Android-green?style=for-the-badge&logo=android&logoColor=white)
 ![Js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![ARM x64](https://img.shields.io/badge/ARMx64-0091BD?style=for-the-badge&logo=arm&logoColor=F7DF1E)
+![ARM x32](https://img.shields.io/badge/ARMx32-0091BD?style=for-the-badge&logo=arm&logoColor=F7DF1E)
+![Linux x64](https://img.shields.io/badge/Linuxx64-FCC624?style=for-the-badge&logo=linux&logoColor=F7DF1E)
 
 [![KDocs](https://img.shields.io/badge/KDocs-323330?style=for-the-badge&logo=Kotlin&logoColor=7F52FF)](https://insanusmokrassar.github.io/KSLog/)
 [![Tutorials](https://img.shields.io/badge/Tutorials-0288D1?style=for-the-badge&logo=bookstack&logoColor=white)](https://bookstack.inmo.dev/books/kslog)
