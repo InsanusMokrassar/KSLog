@@ -31,7 +31,7 @@ android-test-espresso-core = { module = "androidx.test.espresso:espresso-core", 
 android-tools-build = { module = "com.android.tools.build:gradle", version.ref = "kotlin-gradle-plugin" }
 android-dexcount = { module = "com.getkeepsafe.dexcount:dexcount-gradle-plugin", version.ref = "dexcount" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
+kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 github-release = { module = "com.github.breadmoirai:github-release", version.ref = "github-release" }
 
 [plugins]
