@@ -1,7 +1,9 @@
 [versions]
 
-kotlin = "1.7.21"
+kotlin = "1.7.22"
 kotlin-gradle-plugin = "7.2.2"
+
+dokka = "1.7.20"
 
 dexcount = "3.1.0"
 junit_version = "4.12"
@@ -35,4 +37,4 @@ github-release = { module = "com.github.breadmoirai:github-release", version.ref
 [plugins]
 
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
