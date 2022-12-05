@@ -1,7 +1,9 @@
 [versions]
 
-kotlin = "1.7.20"
+kotlin = "1.7.22"
 kotlin-gradle-plugin = "7.2.2"
+
+dokka = "1.7.20"
 
 dexcount = "3.1.0"
 junit_version = "4.12"
@@ -29,10 +31,10 @@ android-test-espresso-core = { module = "androidx.test.espresso:espresso-core", 
 android-tools-build = { module = "com.android.tools.build:gradle", version.ref = "kotlin-gradle-plugin" }
 android-dexcount = { module = "com.getkeepsafe.dexcount:dexcount-gradle-plugin", version.ref = "dexcount" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
+kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 github-release = { module = "com.github.breadmoirai:github-release", version.ref = "github-release" }
 
 [plugins]
 
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
