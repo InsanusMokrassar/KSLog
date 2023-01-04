@@ -1,7 +1,7 @@
 [versions]
 
-kotlin = "1.7.22"
-kotlin-gradle-plugin = "7.2.2"
+kotlin = "1.8.0"
+kotlin-gradle-plugin = "7.3.0"
 
 dokka = "1.7.20"
 
