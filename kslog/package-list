@@ -226,6 +226,8 @@ $dokka.location:dev.inmo.kslog.common/LogLevel.INFO///PointingToDeclaration/{"or
 $dokka.location:dev.inmo.kslog.common/LogLevel.VERBOSE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}kslog/dev.inmo.kslog.common/-log-level/-v-e-r-b-o-s-e/index.html
 $dokka.location:dev.inmo.kslog.common/LogLevel.WARNING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}kslog/dev.inmo.kslog.common/-log-level/-w-a-r-n-i-n-g/index.html
 $dokka.location:dev.inmo.kslog.common/LogLevel///PointingToDeclaration/kslog/dev.inmo.kslog.common/-log-level/index.html
+$dokka.location:dev.inmo.kslog.common/LogLevel/valueOf/#kotlin.String/PointingToDeclaration/kslog/dev.inmo.kslog.common/-log-level/value-of.html
+$dokka.location:dev.inmo.kslog.common/LogLevel/values/#/PointingToDeclaration/kslog/dev.inmo.kslog.common/-log-level/values.html
 $dokka.location:dev.inmo.kslog.common/TagLogger///PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/index.html
 $dokka.location:dev.inmo.kslog.common/TagLogger/TagLogger/#kotlin.String/PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/-tag-logger.html
 $dokka.location:dev.inmo.kslog.common/TagLogger/performLog/#dev.inmo.kslog.common.LogLevel#kotlin.String?#kotlin.Any#kotlin.Throwable?/PointingToDeclaration/kslog/dev.inmo.kslog.common/-tag-logger/perform-log.html
