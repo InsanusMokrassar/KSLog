@@ -3,6 +3,7 @@
 ## 1.1.0
 
 * `Kotlin`: `1.8.20`
+* Standard factory `KSLog` with `String` arg now use `TagLogger`
 
 ## 1.0.0
 
