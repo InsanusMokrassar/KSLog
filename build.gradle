@@ -50,6 +50,11 @@ kotlin {
     linuxArm64()
     linuxArm32Hfp()
     linuxX64()
+    wasm {
+        browser()
+        nodejs()
+        d8()
+    }
     wasm32()
     mingwX64()
     mingwX86()
@@ -58,6 +63,13 @@ kotlin {
         commonMain {
             dependencies {
                 implementation libs.kotlin
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation libs.kotlin.test.common
+                implementation libs.kotlin.test.annotations.common
+                implementation libs.kotlin.test.junit
             }
         }
     }

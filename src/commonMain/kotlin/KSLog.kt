@@ -68,7 +68,7 @@ internal val printlnLogging: (level: LogLevel, tag: String, message: Any, throwa
 
 fun KSLog(
     defaultTag: String,
-): KSLog = TagLogger(defaultTag)
+): KSLog = DefaultKSLog(defaultTag)
 
 fun KSLog(
     defaultTag: String,
