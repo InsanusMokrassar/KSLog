@@ -10,7 +10,7 @@ It is simple and easy-to-use tool for logging on the most popular platforms in K
 ![Linux x64](https://img.shields.io/badge/Linuxx64-FCC624?style=for-the-badge&logo=linux&logoColor=F7DF1E)
 
 [![KDocs](https://img.shields.io/badge/KDocs-323330?style=for-the-badge&logo=Kotlin&logoColor=7F52FF)](https://insanusmokrassar.github.io/KSLog/)
-[![Tutorials](https://img.shields.io/badge/Tutorials-0288D1?style=for-the-badge&logo=bookstack&logoColor=white)](https://bookstack.inmo.dev/books/kslog)
+[![Tutorials](https://img.shields.io/badge/Tutorials-0288D1?style=for-the-badge&logo=mkdocs&logoColor=white)](https://docs.inmo.dev/kslog/index.html)
 
 By default, KSLog is using built-in tools for logging on each supported platform:
 
