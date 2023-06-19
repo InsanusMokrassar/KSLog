@@ -2,6 +2,8 @@
 
 ## 1.1.2
 
+* `Kotlin`: `1.8.22`
+
 ## 1.1.1
 
 * Rollback `KSLog` with `String` arg factory to use `DefaultKSLog`
