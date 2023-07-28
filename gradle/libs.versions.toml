@@ -1,7 +1,9 @@
 [versions]
 
-kotlin = "1.8.22"
+kotlin = "1.9.0"
 kotlin-gradle-plugin = "7.4.2"
+
+versions = "0.47.0"
 
 dokka = "1.8.20"
 
@@ -12,7 +14,7 @@ espresso_core = "3.5.1"
 
 android-minSdk = "21"
 android-compileSdk = "33"
-android-buildTools = "33.0.1"
+android-buildTools = "33.0.2"
 
 github-release = "2.4.1"
 
@@ -38,3 +40,5 @@ github-release = { module = "com.github.breadmoirai:github-release", version.ref
 
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

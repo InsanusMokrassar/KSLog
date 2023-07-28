@@ -19,6 +19,7 @@ buildscript {
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.dokka)
+    alias(libs.plugins.versions)
 }
 
 apply plugin: "com.android.library"
