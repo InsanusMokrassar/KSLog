@@ -2,6 +2,9 @@
 
 ## 1.2.1
 
+* `Kotlin`: `1.9.10`
+* Latest supported android sdk now is `34`
+
 ## 1.2.0
 
 * `Kotlin`: `1.9.0`
