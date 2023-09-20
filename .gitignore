@@ -12,6 +12,5 @@ out/
 secret.gradle
 local.*
 local/
-kotlin-js-store/
 
 publishing.sh

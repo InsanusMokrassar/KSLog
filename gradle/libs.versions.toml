@@ -1,9 +1,9 @@
 [versions]
 
 kotlin = "1.9.10"
-kotlin-gradle-plugin = "7.4.2"
+kotlin-gradle-plugin = "8.1.1"
 
-versions = "0.47.0"
+versions = "0.48.0"
 
 dokka = "1.9.0"
 

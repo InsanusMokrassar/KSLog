@@ -32,6 +32,10 @@ interface KSLog {
 
     companion object : KSLog {
         private var defaultLogger: KSLog? = null
+
+        /**
+         * Default logger used in case you are trying to use [KSLog] as a receiver for extensions like [info]
+         */
         var default: KSLog
             get() {
                 return defaultLogger ?: KSLog("app").also {
