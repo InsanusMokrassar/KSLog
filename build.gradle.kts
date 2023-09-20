@@ -3,26 +3,23 @@ buildscript {
         google()
         mavenCentral()
         mavenLocal()
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { setUrl("https://plugins.gradle.org/m2/") }
     }
-
     dependencies {
-        classpath libs.android.tools.build
-        classpath libs.android.dexcount
-        classpath libs.kotlin.gradle.plugin
-        classpath libs.kotlin.dokka.plugin
-        classpath libs.github.release
+        classpath (libs.android.tools.build)
+        classpath (libs.android.dexcount)
+        classpath (libs.kotlin.gradle.plugin)
+        classpath (libs.kotlin.dokka.plugin)
+        classpath (libs.github.release)
     }
 }
-
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.dokka)
     alias(libs.plugins.versions)
 }
 
-apply plugin: "com.android.library"
+apply(plugin = "com.android.library")
 
 project.version = "$version"
 project.group = "$group"
@@ -35,7 +32,7 @@ repositories {
 
 kotlin {
     jvm {
-        compilations.main {
+        compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
@@ -45,7 +42,7 @@ kotlin {
         browser()
         nodejs()
     }
-    android {
+    androidTarget {
         publishAllLibraryVariants()
         compilations.all {
             kotlinOptions {
@@ -68,14 +65,14 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation libs.kotlin
+                implementation(libs.kotlin)
             }
         }
         commonTest {
             dependencies {
-                implementation libs.kotlin.test.common
-                implementation libs.kotlin.test.annotations.common
-                implementation libs.kotlin.test.junit
+                implementation (libs.kotlin.test.common)
+                implementation (libs.kotlin.test.annotations.common)
+                implementation (libs.kotlin.test.junit)
             }
         }
     }
@@ -86,8 +83,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-apply from: "defaultAndroidSettings.gradle"
-
-apply from: "github_release.gradle"
-apply from: "publish.gradle"
-apply from: "dokka.gradle"
+apply (from = "defaultAndroidSettings.gradle")
+apply (from = "github_release.gradle")
+apply (from = "publish.gradle")
+apply (from = "dokka.gradle")
