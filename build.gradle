@@ -89,3 +89,11 @@ apply from: "defaultAndroidSettings.gradle"
 apply from: "github_release.gradle"
 apply from: "publish.gradle"
 apply from: "dokka.gradle"
+
+def publishTasks = tasks.findAll { it.name.containsIgnoreCase("publish") }
+def signTasks = tasks.findAll { it.name.containsIgnoreCase("sign") }
+publishTasks.forEach { task ->
+    signTasks.forEach {
+        task.dependsOn(it)
+    }
+}
