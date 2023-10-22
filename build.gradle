@@ -45,8 +45,13 @@ kotlin {
         browser()
         nodejs()
     }
-    android {
+    androidTarget {
         publishAllLibraryVariants()
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
     }
     linuxArm64()
     linuxArm32Hfp()
@@ -56,9 +61,7 @@ kotlin {
         nodejs()
         d8()
     }
-    wasm32()
     mingwX64()
-    mingwX86()
 
     sourceSets {
         commonMain {

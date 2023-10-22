@@ -26,8 +26,9 @@ android {
         }
     }
 
-    compileSdkVersion libs.versions.android.compileSdk.get().toInteger()
-    buildToolsVersion libs.versions.android.buildTools.get()
+    compileSdk libs.versions.android.compileSdk.get().toInteger()
+    buildToolsVersion = libs.versions.android.buildTools.get()
+    namespace "${group}.${project.name}"
 
     defaultConfig {
         minSdkVersion libs.versions.android.minSdk.get().toInteger()
