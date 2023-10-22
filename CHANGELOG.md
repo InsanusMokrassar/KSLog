@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.2
+
+**wasm32 target has been removed**
+**mingwX86 target has been removed**
+
+* `Kotlin`: `1.9.20-RC`
+
 ## 1.2.1
 
 * `Kotlin`: `1.9.10`
