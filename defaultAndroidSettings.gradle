@@ -44,6 +44,13 @@ android {
             debuggable true
         }
     }
+    publishing {
+        multipleVariants {
+            allVariants()
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 
     packagingOptions {
         exclude 'META-INF/kotlinx-serialization-runtime.kotlin_module'
