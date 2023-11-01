@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3
+
+* `Kotlin`: `1.9.20`
+
 ## 1.2.2
 
 **wasm32 target has been removed**
