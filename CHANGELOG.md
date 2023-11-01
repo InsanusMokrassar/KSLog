@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.2.3
+
 ## 1.2.2
 
 **wasm32 target has been removed**
