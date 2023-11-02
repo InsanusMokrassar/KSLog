@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.4
+
+**This update contains migration onto gradle 8+ (for both wrapper and android plugin). Use it with caution**
+
 ## 1.2.3
 
 * `Kotlin`: `1.9.20`
