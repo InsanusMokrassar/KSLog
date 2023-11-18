@@ -2,6 +2,15 @@ package dev.inmo.kslog.common
 
 import dev.inmo.kslog.common.filter.filtered
 
+/**
+ * Logger based on [defaultLogging] or [logging] parameter
+ *
+ * @param defaultTag will be used in case when `tag` parameter in [performLog] omitted
+ * @param messageFormatter special formatter which creating [String] inside of [performLog] for each call. Defaults to
+ * [defaultMessageFormatter]
+ * @param logging target lambda which will be called with a result of [messageFormatter] logs formatting as a message
+ * and tag as tag if not `null` and [defaultTag] otherwise
+ */
 class DefaultKSLog(
     private val defaultTag: String,
     private val messageFormatter: MessageFormatter = defaultMessageFormatter,
