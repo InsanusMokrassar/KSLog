@@ -14,6 +14,6 @@ actual var KSLoggerDefaultPlatformLoggerLambda: (level: LogLevel, tag: String, m
         LogLevel.INFO -> console.info(*args)
         LogLevel.WARNING -> console.warn(*args)
         LogLevel.ERROR -> console.error(*args)
-        LogLevel.ASSERT -> console.assert(*args)
+        LogLevel.ASSERT -> console.error(*args)
     }
 }
