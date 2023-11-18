@@ -3,6 +3,9 @@ package dev.inmo.kslog.common.typed
 import dev.inmo.kslog.common.*
 import kotlin.reflect.KClass
 
+/**
+ * Special builder for [TypedKSLog]
+ */
 class TypedKSLogBuilder(
     private val preset: Map<KClass<*>?, KSLog> = emptyMap()
 ) {
@@ -22,6 +25,9 @@ class TypedKSLogBuilder(
     fun build() = TypedKSLog(loggers.toMap())
 }
 
+/**
+ * DSL for [TypedKSLogBuilder]
+ */
 inline fun buildTypedLogger(
     preset: Map<KClass<*>?, KSLog> = emptyMap(),
     block: TypedKSLogBuilder.() -> Unit

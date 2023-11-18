@@ -15,6 +15,19 @@ inline fun KSLog.log(level: LogLevel, tag: String, message: Any, e: Throwable?) 
 inline fun KSLog.log(level: LogLevel, tag: String, message: Any) = performLog(level, tag, message, null)
 
 
+inline fun KSLog.trace(e: Throwable? = null, noinline messageBuilder: () -> Any) = log(LogLevel.TRACE, null, e, messageBuilder)
+inline fun KSLog.trace(tag: String?, e: Throwable? = null, noinline messageBuilder: () -> Any) = log(LogLevel.TRACE, tag, e, messageBuilder)
+inline fun KSLog.trace(tag: String, noinline messageBuilder: () -> Any) = trace(tag, null, messageBuilder)
+suspend inline fun KSLog.traceS(e: Throwable? = null, noinline messageBuilder: suspend () -> Any) = logS(LogLevel.TRACE, null, e, messageBuilder)
+suspend inline fun KSLog.traceS(tag: String?, e: Throwable? = null, noinline messageBuilder: suspend () -> Any) = logS(LogLevel.TRACE, tag, e, messageBuilder)
+suspend inline fun KSLog.traceS(tag: String, noinline messageBuilder: suspend () -> Any) = traceS(tag, null, messageBuilder)
+inline fun KSLog.trace(message: Any, e: Throwable?) = log(LogLevel.TRACE, message, e)
+inline fun KSLog.trace(message: String, e: Throwable) = trace(message as Any, e)
+inline fun KSLog.trace(message: Any) = trace(message, null)
+inline fun KSLog.trace(tag: String, message: Any, e: Throwable?) = log(LogLevel.TRACE, tag, message, e)
+inline fun KSLog.trace(tag: String, message: Any) = trace(tag, message, null)
+
+
 inline fun KSLog.debug(e: Throwable? = null, noinline messageBuilder: () -> Any) = log(LogLevel.DEBUG, null, e, messageBuilder)
 inline fun KSLog.debug(tag: String?, e: Throwable? = null, noinline messageBuilder: () -> Any) = log(LogLevel.DEBUG, tag, e, messageBuilder)
 inline fun KSLog.debug(tag: String, noinline messageBuilder: () -> Any) = debug(tag, null, messageBuilder)
@@ -106,6 +119,19 @@ inline fun KSLog.l(level: LogLevel, message: String, e: Throwable) = l(level, me
 inline fun KSLog.l(level: LogLevel, message: Any) = log(level, message, null)
 inline fun KSLog.l(level: LogLevel, tag: String, message: Any, e: Throwable?) = log(level, tag, message, e)
 inline fun KSLog.l(level: LogLevel, tag: String, message: Any) = log(level, tag, message, null)
+
+
+inline fun KSLog.t(e: Throwable? = null, noinline messageBuilder: () -> Any) = trace(e, messageBuilder)
+inline fun KSLog.t(tag: String?, e: Throwable? = null, noinline messageBuilder: () -> Any) = trace(tag, e, messageBuilder)
+inline fun KSLog.t(tag: String, noinline messageBuilder: () -> Any) = t(tag, null, messageBuilder)
+suspend inline fun KSLog.tS(e: Throwable? = null, noinline messageBuilder: suspend () -> Any) = traceS(e, messageBuilder)
+suspend inline fun KSLog.tS(tag: String?, e: Throwable? = null, noinline messageBuilder: suspend () -> Any) = traceS(tag, e, messageBuilder)
+suspend inline fun KSLog.tS(tag: String, noinline messageBuilder: suspend () -> Any) = tS(tag, null, messageBuilder)
+inline fun KSLog.t(message: Any, e: Throwable?) = trace(message, e)
+inline fun KSLog.t(message: String, e: Throwable) = t(message as Any, e)
+inline fun KSLog.t(message: Any) = t(message, null)
+inline fun KSLog.t(tag: String, message: Any, e: Throwable?) = trace(tag, message, e)
+inline fun KSLog.t(tag: String, message: Any) = t(tag, message, null)
 
 
 inline fun KSLog.d(e: Throwable? = null, noinline messageBuilder: () -> Any) = debug(e, messageBuilder)

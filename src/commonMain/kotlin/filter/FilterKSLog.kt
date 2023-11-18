@@ -2,6 +2,10 @@ package dev.inmo.kslog.common.filter
 
 import dev.inmo.kslog.common.*
 
+/**
+ * In its [performLog]/[performLogS] methods do logging only in cases when [messageFilter] returns true for incoming
+ * parameters
+ */
 class FilterKSLog(
     private val fallbackLogger: KSLog,
     private val messageFilter: MessageFilter

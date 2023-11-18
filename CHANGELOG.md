@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0
+
+**THIS UPDATE CONTAINS CHANGES OF LOG LEVELS ACCORDANCES. LOOK AT THE LEVELS ACCORDANCE IN THE [DOCUMENTATION](https://docs.inmo.dev/kslog/logging.html#logging)
+FOR MORE INFO**
+
+* Add `trace` logging level
+* Change overall table of log level accordance
+* Now you may change default platform logger
+
 ## 1.2.4
 
 **This update contains migration onto gradle 8+ (for both wrapper and android plugin). Use it with caution**
