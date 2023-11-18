@@ -11,6 +11,7 @@ private fun Logger.doLog(
     l: LogLevel, t: String, m: String, e: Throwable?
 ) = log(
     when(l) {
+        LogLevel.TRACE -> Level.ALL
         LogLevel.DEBUG -> Level.FINEST
         LogLevel.VERBOSE -> Level.FINE
         LogLevel.INFO -> Level.INFO

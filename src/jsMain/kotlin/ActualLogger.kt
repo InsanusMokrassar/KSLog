@@ -5,6 +5,7 @@ internal actual val defaultLogging: (level: LogLevel, tag: String, message: Any,
         arrayOf(m, e)
     } ?: arrayOf(m)
     when (l) {
+        LogLevel.TRACE,
         LogLevel.DEBUG -> console.log(*args)
         LogLevel.VERBOSE,
         LogLevel.INFO -> console.info(*args)

@@ -5,6 +5,7 @@ import dev.inmo.kslog.common.utils.plus
 
 
 enum class LogLevel {
+    TRACE,
     DEBUG,
     VERBOSE,
     INFO,
