@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.5
+## 1.3.0
 
 * Add `trace` logging level
 * Change overall table of log level accordance
