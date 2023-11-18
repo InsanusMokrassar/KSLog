@@ -49,7 +49,7 @@ $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin
 $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin.String#kotlin.Throwable/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
 $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin.String?#kotlin.Throwable?#kotlin.Function0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
 $dokka.location:dev.inmo.kslog.common//assert/dev.inmo.kslog.common.KSLog#kotlin.Throwable?#kotlin.Function0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
-$dokka.location:dev.inmo.kslog.common//assert/kotlin.js.Console#kotlin.Array[kotlin.Any?]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
+$dokka.location:dev.inmo.kslog.common//assert/kotlin.js.Console#kotlin.Boolean#kotlin.Array[kotlin.Any?]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert.html
 $dokka.location:dev.inmo.kslog.common//assertS/dev.inmo.kslog.common.KSLog#kotlin.String#kotlin.coroutines.SuspendFunction0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert-s.html
 $dokka.location:dev.inmo.kslog.common//assertS/dev.inmo.kslog.common.KSLog#kotlin.String?#kotlin.Throwable?#kotlin.coroutines.SuspendFunction0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert-s.html
 $dokka.location:dev.inmo.kslog.common//assertS/dev.inmo.kslog.common.KSLog#kotlin.Throwable?#kotlin.coroutines.SuspendFunction0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/assert-s.html
@@ -236,7 +236,7 @@ $dokka.location:dev.inmo.kslog.common/DefaultKSLog/performLog/#dev.inmo.kslog.co
 $dokka.location:dev.inmo.kslog.common/DefaultKSLog/performLog/#dev.inmo.kslog.common.LogLevel#kotlin.String?#kotlin.Throwable?#kotlin.Function0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-default-k-s-log/perform-log.html
 $dokka.location:dev.inmo.kslog.common/DefaultKSLog/performLogS/#dev.inmo.kslog.common.LogLevel#kotlin.String?#kotlin.Throwable?#kotlin.coroutines.SuspendFunction0[kotlin.Any]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-default-k-s-log/perform-log-s.html
 $dokka.location:dev.inmo.kslog.common/ExtendedConsole///PointingToDeclaration/kslog/dev.inmo.kslog.common/-extended-console/index.html
-$dokka.location:dev.inmo.kslog.common/ExtendedConsole/assert/#kotlin.Array[kotlin.Any?]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-extended-console/assert.html
+$dokka.location:dev.inmo.kslog.common/ExtendedConsole/assert/#kotlin.Boolean#kotlin.Array[kotlin.Any?]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-extended-console/assert.html
 $dokka.location:dev.inmo.kslog.common/ExtendedConsole/debug/#kotlin.Array[kotlin.Any?]/PointingToDeclaration/kslog/dev.inmo.kslog.common/-extended-console/debug.html
 $dokka.location:dev.inmo.kslog.common/ExtendedConsole/trace/#/PointingToDeclaration/kslog/dev.inmo.kslog.common/-extended-console/trace.html
 $dokka.location:dev.inmo.kslog.common/KSLog.Companion///PointingToDeclaration/kslog/dev.inmo.kslog.common/-k-s-log/-companion/index.html
