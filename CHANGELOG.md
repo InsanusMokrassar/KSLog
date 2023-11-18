@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.2.5
+
 ## 1.2.4
 
 **This update contains migration onto gradle 8+ (for both wrapper and android plugin). Use it with caution**
