@@ -3,6 +3,8 @@
 ## 1.2.5
 
 * Add `trace` logging level
+* Change overall table of log level accordance
+* Now you may change default platform logger
 
 ## 1.2.4
 

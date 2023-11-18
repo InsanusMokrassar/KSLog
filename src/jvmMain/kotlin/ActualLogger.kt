@@ -4,15 +4,15 @@ import dev.inmo.kslog.common.filter.filtered
 import java.util.logging.Level
 import java.util.logging.Logger
 
-private val defaultKSLogLogger by lazy {
+internal val defaultKSLogLogger by lazy {
     Logger.getLogger("KSLog")
 }
-private fun Logger.doLog(
+internal fun Logger.doLog(
     l: LogLevel, t: String, m: String, e: Throwable?
 ) = log(
     when(l) {
-        LogLevel.TRACE -> Level.ALL
-        LogLevel.DEBUG -> Level.FINEST
+        LogLevel.TRACE -> Level.FINEST
+        LogLevel.DEBUG -> Level.FINER
         LogLevel.VERBOSE -> Level.FINE
         LogLevel.INFO -> Level.INFO
         LogLevel.WARNING -> Level.WARNING
@@ -22,9 +22,6 @@ private fun Logger.doLog(
     m,
     e
 )
-internal actual val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = { l, t, m, e ->
-    defaultKSLogLogger.doLog(l, t, m.toString(), e)
-}
 
 @Deprecated("Filtering should be replaced with FilterKSLog")
 fun KSLog(
@@ -53,8 +50,8 @@ fun KSLog(
     levels: Iterable<LogLevel>,
     messageFormatter: MessageFormatter = defaultMessageFormatter
 ): KSLog {
-    val levels = levels.toSet()
-    return KSLog (defaultTag, logger, messageFormatter).filtered { l, _, _ -> l in levels }
+    val levelsSet = levels.toSet()
+    return KSLog (defaultTag, logger, messageFormatter).filtered { l, _, _ -> l in levelsSet }
 }
 
 fun KSLog(

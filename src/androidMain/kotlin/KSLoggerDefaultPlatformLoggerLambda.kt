@@ -2,8 +2,7 @@ package dev.inmo.kslog.common
 
 import android.util.Log
 
-
-internal actual val defaultLogging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = { l, t, m, e ->
+actual var KSLoggerDefaultPlatformLoggerLambda: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = { l, t, m, e ->
     val messageString = m.toString()
     when(l) {
         LogLevel.TRACE -> Log.d(t, messageString, e)

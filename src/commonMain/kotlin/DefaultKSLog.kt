@@ -3,7 +3,7 @@ package dev.inmo.kslog.common
 import dev.inmo.kslog.common.filter.filtered
 
 /**
- * Logger based on [defaultLogging] or [logging] parameter
+ * Logger based on [KSLoggerDefaultPlatformLoggerLambda] or [logging] parameter
  *
  * @param defaultTag will be used in case when `tag` parameter in [performLog] omitted
  * @param messageFormatter special formatter which creating [String] inside of [performLog] for each call. Defaults to
@@ -14,20 +14,20 @@ import dev.inmo.kslog.common.filter.filtered
 class DefaultKSLog(
     private val defaultTag: String,
     private val messageFormatter: MessageFormatter = defaultMessageFormatter,
-    private val logging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = defaultLogging
+    private val logging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = KSLoggerDefaultPlatformLoggerLambda
 ) : KSLog {
     override fun performLog(level: LogLevel, tag: String?, message: Any, throwable: Throwable?) {
-        val tag = tag ?: defaultTag
+        val resultTag = tag ?: defaultTag
 
-        val text = messageFormatter(level, tag, message, throwable)
-        logging(level, tag, text, throwable)
+        val text = messageFormatter(level, resultTag, message, throwable)
+        logging(level, resultTag, text, throwable)
     }
 
     override fun performLog(level: LogLevel, tag: String?, throwable: Throwable?, messageBuilder: () -> Any) {
-        val tag = tag ?: defaultTag
+        val resultTag = tag ?: defaultTag
 
-        val text = messageFormatter(level, tag, messageBuilder(), throwable)
-        logging(level, tag, text, throwable)
+        val text = messageFormatter(level, resultTag, messageBuilder(), throwable)
+        logging(level, resultTag, text, throwable)
     }
 
     override suspend fun performLogS(
@@ -36,10 +36,10 @@ class DefaultKSLog(
         throwable: Throwable?,
         messageBuilder: suspend () -> Any
     ) {
-        val tag = tag ?: defaultTag
+        val resultTag = tag ?: defaultTag
 
-        val text = messageFormatter(level, tag, messageBuilder(), throwable)
-        logging(level, tag, text, throwable)
+        val text = messageFormatter(level, resultTag, messageBuilder(), throwable)
+        logging(level, resultTag, text, throwable)
     }
 }
 
@@ -48,7 +48,7 @@ fun DefaultKSLog(
     defaultTag: String,
     filter: MessageFilter = { _, _, _ -> true },
     messageFormatter: MessageFormatter = defaultMessageFormatter,
-    logging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = defaultLogging
+    logging: (level: LogLevel, tag: String, message: Any, throwable: Throwable?) -> Unit = KSLoggerDefaultPlatformLoggerLambda
 ) = DefaultKSLog(
     defaultTag, messageFormatter, logging
 ).filtered(filter)
