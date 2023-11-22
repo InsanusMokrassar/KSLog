@@ -16,7 +16,7 @@ android-minSdk = "21"
 android-compileSdk = "34"
 android-buildTools = "34.0.0"
 
-github-release = "2.4.1"
+github-release = "2.5.2"
 
 [libraries]
 
