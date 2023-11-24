@@ -2,6 +2,8 @@
 
 ## 1.3.1
 
+* `Kotlin`: `1.9.21`
+
 ## 1.3.0
 
 **THIS UPDATE CONTAINS CHANGES OF LOG LEVELS ACCORDANCES. LOOK AT THE LEVELS ACCORDANCE IN THE [DOCUMENTATION](https://docs.inmo.dev/kslog/logging.html#logging)
