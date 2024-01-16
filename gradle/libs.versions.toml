@@ -1,7 +1,7 @@
 [versions]
 
-kotlin = "1.9.21"
-kotlin-gradle-plugin = "8.1.4"
+kotlin = "1.9.22"
+kotlin-gradle-plugin = "8.2.1"
 
 versions = "0.50.0"
 
@@ -16,7 +16,7 @@ android-minSdk = "21"
 android-compileSdk = "34"
 android-buildTools = "34.0.0"
 
-github-release = "2.4.1"
+github-release = "2.5.2"
 
 [libraries]
 
