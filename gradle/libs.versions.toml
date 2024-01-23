@@ -3,7 +3,7 @@
 kotlin = "1.9.22"
 kotlin-gradle-plugin = "8.2.1"
 
-versions = "0.50.0"
+versions = "0.51.0"
 
 dokka = "1.9.10"
 
