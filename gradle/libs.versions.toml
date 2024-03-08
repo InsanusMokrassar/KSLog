@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 kotlin-gradle-plugin = "8.2.1"
 
 versions = "0.50.0"
