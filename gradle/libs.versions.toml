@@ -1,11 +1,11 @@
 [versions]
 
-kotlin = "1.9.22"
-kotlin-gradle-plugin = "8.2.1"
+kotlin = "1.9.23"
+kotlin-gradle-plugin = "8.3.0"
 
-versions = "0.50.0"
+versions = "0.51.0"
 
-dokka = "1.9.10"
+dokka = "1.9.20"
 
 dexcount = "4.0.0"
 junit_version = "4.12"
