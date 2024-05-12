@@ -2,6 +2,9 @@
 
 ## 1.3.4
 
+* `Kotlin`: `1.9.24`
+* Native realization of `KSLoggerDefaultPlatformLoggerLambda` now is common for all native targets
+
 ## 1.3.3
 
 * `Kotlin`: `1.9.23`
