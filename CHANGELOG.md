@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.5
+
+* `Kotlin`: `2.0.10`
+* Android SDK Level: `35`
+
 ## 1.3.4
 
 * `Kotlin`: `1.9.24`
