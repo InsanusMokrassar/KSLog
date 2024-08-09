@@ -1,4 +1,5 @@
 .idea
+.kotlin
 out/*
 *.iml
 target
@@ -12,5 +13,6 @@ out/
 secret.gradle
 local.*
 local/
+**/*.local.*
 
 publishing.sh

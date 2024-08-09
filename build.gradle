@@ -73,6 +73,10 @@ kotlin {
             dependencies {
                 implementation libs.kotlin.test.common
                 implementation libs.kotlin.test.annotations.common
+            }
+        }
+        jvmTest {
+            dependencies {
                 implementation libs.kotlin.test.junit
             }
         }
