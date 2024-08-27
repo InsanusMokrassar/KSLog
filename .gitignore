@@ -1,5 +1,6 @@
 .idea
 .kotlin
+kotlin-js-store/
 out/*
 *.iml
 target
