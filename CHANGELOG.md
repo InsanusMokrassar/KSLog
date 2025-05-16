@@ -2,6 +2,9 @@
 
 ## 1.4.2
 
+* `Kotlin`: `2.1.21`
+* Android SDK Level: `36`
+
 ## 1.4.1
 
 * `Kotlin`: `2.1.10`
