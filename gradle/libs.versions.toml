@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "2.1.10"
+kotlin = "2.1.21"
 kotlin-gradle-plugin = "8.2.2"
 
 versions = "0.51.0"
@@ -13,8 +13,8 @@ test_ext_junit_version = "1.2.1"
 espresso_core = "3.6.1"
 
 android-minSdk = "21"
-android-compileSdk = "35"
-android-buildTools = "35.0.0"
+android-compileSdk = "36"
+android-buildTools = "36.0.0"
 
 github-release = "2.5.2"
 
