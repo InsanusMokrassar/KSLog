@@ -13,14 +13,15 @@ private String getCurrentVersionChangelog() {
 
 
 def githubTokenVariableName = "GITHUB_RELEASE_TOKEN"
+def githubTokenVariableFromEnv = System.getenv(githubTokenVariableName)
 
 def secretFile = new File(projectDir, "secret.gradle")
-if (secretFile.exists() || project.hasProperty(githubTokenVariableName) || System.getenv(githubTokenVariableName) != "") {
+if (secretFile.exists() || project.hasProperty(githubTokenVariableName) || (githubTokenVariableFromEnv != "" && githubTokenVariableFromEnv != null)) {
     if (secretFile.exists()) {
         apply from: './secret.gradle'
     }
     apply plugin: "com.github.breadmoirai.github-release"
-    def githubReleaseToken = project.hasProperty(githubTokenVariableName) ? project.property(githubTokenVariableName).toString() : System.getenv(githubTokenVariableName)
+    def githubReleaseToken = project.hasProperty(githubTokenVariableName) ? project.property(githubTokenVariableName).toString() : githubTokenVariableFromEnv
 
     githubRelease {
         token githubReleaseToken
