@@ -1,8 +1,9 @@
 [versions]
 
-kotlin = "2.1.21"
+kotlin = "2.2.0"
 kotlin-gradle-plugin = "8.2.2"
 
+nmcp = "0.2.1"
 versions = "0.51.0"
 
 dokka = "2.0.0"
@@ -42,3 +43,5 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+
+nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" }
