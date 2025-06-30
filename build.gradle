@@ -23,6 +23,13 @@ plugins {
     alias(libs.plugins.nmcp.aggregation)
 }
 
+apply plugin: "com.android.library"
+apply from: "defaultAndroidSettings.gradle"
+
+apply from: "github_release.gradle"
+apply from: "publish.gradle"
+apply from: "dokka.gradle"
+
 
 if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
     nmcpAggregation {
@@ -36,8 +43,6 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
         publishAllProjectsProbablyBreakingProjectIsolation()
     }
 }
-
-apply plugin: "com.android.library"
 
 project.version = "$version"
 project.group = "$group"
@@ -102,9 +107,3 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
-
-apply from: "defaultAndroidSettings.gradle"
-
-apply from: "github_release.gradle"
-apply from: "publish.gradle"
-apply from: "dokka.gradle"
