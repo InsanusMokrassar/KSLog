@@ -11,7 +11,7 @@ dokka = "2.0.0"
 dexcount = "4.0.0"
 junit_version = "4.12"
 test_ext_junit_version = "1.2.1"
-espresso_core = "3.6.1"
+espresso_core = "3.7.0"
 
 android-minSdk = "21"
 android-compileSdk = "36"
