@@ -4,7 +4,7 @@ kotlin = "2.2.20"
 kotlin-gradle-plugin = "8.10.+"
 
 nmcp = "1.2.0"
-versions = "0.51.0"
+versions = "0.53.0"
 
 dokka = "2.0.0"
 
