@@ -6,7 +6,7 @@ kotlin-gradle-plugin = "8.10.+"
 nmcp = "1.2.0"
 versions = "0.51.0"
 
-dokka = "2.0.0"
+dokka = "2.1.0"
 
 dexcount = "4.0.0"
 junit_version = "4.12"
