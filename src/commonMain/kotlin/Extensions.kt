@@ -2,6 +2,18 @@
 
 package dev.inmo.kslog.common
 
+/**
+ * Extension functions for convenient logging with [KSLog]
+ * 
+ * This file provides:
+ * - Generic log functions for all log levels
+ * - Specific functions for each log level (trace, debug, verbose, info, warning, error, assert)
+ * - Short aliases (t, d, v, i, w, e, wtf) for quick logging
+ * - Suspendable variants (with 'S' suffix) for async contexts
+ * - Support for lazy message evaluation via lambda builders
+ * - Both tagged and untagged variants
+ */
+
 inline fun KSLog.log(level: LogLevel, tag: String?, e: Throwable? = null, noinline messageBuilder: () -> Any) = performLog(level, tag, e, messageBuilder)
 inline fun KSLog.log(level: LogLevel, tag: String, noinline messageBuilder: () -> Any) = performLog(level, tag, null, messageBuilder)
 suspend inline fun KSLog.logS(level: LogLevel, tag: String?, e: Throwable? = null, noinline messageBuilder: suspend () -> Any) = performLogS(level, tag, e, messageBuilder)

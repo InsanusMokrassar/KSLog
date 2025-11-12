@@ -4,8 +4,25 @@ import dev.inmo.kslog.common.CallbackKSLog
 import dev.inmo.kslog.common.KSLog
 
 /**
- * Will send [KSLog.performLog] of both [this] and [other] [KSLog] instances. In case when [this] will throw exception
- * result logger will rethrow it. After it, if [other] will throw exception - will also rethrow it
+ * Combines two loggers into one that sends messages to both
+ * 
+ * Creates a new logger that will invoke [performLog] on both this logger and the [other] logger
+ * for every log message. Both loggers will be called even if one fails.
+ * 
+ * Error handling:
+ * - If this logger throws an exception, it will be rethrown after attempting to log to [other]
+ * - If [other] throws an exception, it will also be rethrown
+ * - If both throw exceptions, both will be rethrown (first this logger's, then other's)
+ * 
+ * Example:
+ * ```kotlin
+ * val combinedLogger = consoleLogger + fileLogger
+ * combinedLogger.info("Message")  // Logs to both console and file
+ * ```
+ * 
+ * @param other The second logger to combine with this one
+ * @return A new [CallbackKSLog] that logs to both loggers
+ * @see addDefaultKSLog Uses this operator to add loggers to the default logger
  */
 infix operator fun KSLog.plus(other: KSLog) = CallbackKSLog { l, t, m, e ->
     val resultOfFirst = runCatching {
