@@ -3,8 +3,21 @@ package dev.inmo.kslog.common.filter
 import dev.inmo.kslog.common.*
 
 /**
- * In its [performLog]/[performLogS] methods do logging only in cases when [messageFilter] returns true for incoming
- * parameters
+ * A logger that filters messages before passing them to a fallback logger
+ * 
+ * This logger implementation applies a [messageFilter] predicate to all incoming log requests.
+ * Only when the filter returns `true` will the message be passed to the [fallbackLogger].
+ * 
+ * This enables:
+ * - Log level filtering (e.g., only log ERROR and above)
+ * - Tag-based filtering (e.g., only log from specific components)
+ * - Conditional logging based on exception presence
+ * - Lazy message evaluation - messages are only constructed if they pass the filter
+ * 
+ * @param fallbackLogger The underlying logger that will receive filtered messages
+ * @param messageFilter Predicate function that determines which messages to log
+ * 
+ * @see filtered Extension function for convenient filter creation
  */
 class FilterKSLog(
     private val fallbackLogger: KSLog,

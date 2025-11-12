@@ -4,9 +4,25 @@ import dev.inmo.kslog.common.*
 import kotlin.reflect.KClass
 
 /**
- * Uses [typedLoggers] [Map] to determine, where incoming __message__s should be sent. If there is no [KClass] key for
- * incoming message in [typedLoggers], logger will use logger by `null` key if exists. If there is no default logger
- * (by `null` key), logging will be skipped
+ * A logger that routes messages to different loggers based on the message type
+ * 
+ * This logger uses the Kotlin class ([KClass]) of the log message to determine which logger to use.
+ * This enables type-based routing of log messages, allowing different message types to be
+ * handled by different loggers.
+ * 
+ * The routing works as follows:
+ * 1. Extract the [KClass] from the incoming message object
+ * 2. Look up the class in [typedLoggers] map
+ * 3. If found, use that logger
+ * 4. If not found, fall back to the logger with `null` key (if it exists)
+ * 5. If no default logger exists, skip logging
+ * 
+ * Example use case: Route structured log events to different destinations based on their type.
+ * 
+ * @param typedLoggers Map from message class to logger. Use `null` key for the default/fallback logger
+ * 
+ * @see TypedKSLogBuilder Builder for creating typed loggers
+ * @see buildTypedLogger DSL function for convenient creation
  */
 class TypedKSLog(
     private val typedLoggers: Map<KClass<*>?, KSLog>
