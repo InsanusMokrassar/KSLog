@@ -40,7 +40,6 @@ if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != n
             publishingType = System.getenv('PUBLISHING_TYPE') != "" ? System.getenv('PUBLISHING_TYPE') : "USER_MANAGED"
         }
 
-        allowEmptyAggregation = true
         publishAllProjectsProbablyBreakingProjectIsolation()
     }
 }

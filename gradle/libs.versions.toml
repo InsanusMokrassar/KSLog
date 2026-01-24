@@ -3,7 +3,7 @@
 kotlin = "2.3.0"
 kotlin-gradle-plugin = "8.12.+"
 
-nmcp = "1.4.3"
+nmcp = "1.2.1"
 versions = "0.53.0"
 
 dokka = "2.1.0"
