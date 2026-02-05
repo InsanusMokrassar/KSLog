@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 kotlin-gradle-plugin = "8.12.+"
 
 nmcp = "1.2.1"
