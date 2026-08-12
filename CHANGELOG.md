@@ -2,9 +2,7 @@
 
 ## 1.7.0
 
-* Bump org.jetbrains.kotlin:kotlin-gradle-plugin 2.3.20 → 2.3.21
-* Bump com.gradleup.nmcp.aggregation 1.4.4 → 1.6.1
-* Bump com.android.tools.build:gradle 8.12.+ → 8.13.2
+* `Kotlin`: `2.3.21`
 
 ## 1.6.1
 
