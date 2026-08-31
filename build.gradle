@@ -23,7 +23,7 @@ plugins {
     alias(libs.plugins.nmcp.aggregation)
 }
 
-apply plugin: "com.android.library"
+apply plugin: "com.android.kotlin.multiplatform.library"
 apply from: "defaultAndroidSettings.gradle"
 
 apply from: "github_release.gradle"
@@ -65,16 +65,10 @@ kotlin {
         browser()
         nodejs()
     }
-    androidTarget {
-        publishLibraryVariants(
-            "release",
-            "debug",
-        )
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
+    android {
+        project.ext.configureAndroidTarget(delegate)
+        withHostTest {}
+        withDeviceTest {}
     }
     linuxArm64()
     linuxArm32Hfp()
