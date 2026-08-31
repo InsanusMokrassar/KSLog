@@ -1,7 +1,7 @@
 [versions]
 
-kotlin = "2.3.21"
-kotlin-gradle-plugin = "8.13.2"
+kotlin = "2.4.10"
+android-gradle-plugin = "9.1.1"
 
 nmcp = "1.6.1"
 versions = "0.61.0"
@@ -14,8 +14,8 @@ test_ext_junit_version = "1.3.0"
 espresso_core = "3.7.0"
 
 android-minSdk = "21"
-android-compileSdk = "36"
-android-buildTools = "36.1.0"
+android-compileSdk = "37"
+android-buildTools = "37.0.0"
 
 github-release = "2.5.2"
 
@@ -31,7 +31,7 @@ android-test-espresso-core = { module = "androidx.test.espresso:espresso-core", 
 
 # buildscript classpaths
 
-android-tools-build = { module = "com.android.tools.build:gradle", version.ref = "kotlin-gradle-plugin" }
+android-tools-build = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
 android-dexcount = { module = "com.getkeepsafe.dexcount:dexcount-gradle-plugin", version.ref = "dexcount" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
@@ -42,6 +42,6 @@ github-release = { module = "com.github.breadmoirai:github-release", version.ref
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+versions = { id = "io.github.ben-manes.versions", version.ref = "versions" }
 
 nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" }
