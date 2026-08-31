@@ -2,8 +2,8 @@
 
 ## 2.0.0
 
-* Bump com.github.ben-manes.versions 0.53.0 → 0.61.0
-* Bump Android SDK Build-Tools 36.0.0 → 36.1.0
+* `Versions`:
+  * `Kotlin`: `2.3.21` -> `2.4.10`
 
 ## 1.7.0
 
