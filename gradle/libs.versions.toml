@@ -3,7 +3,7 @@
 kotlin = "2.4.10"
 android-gradle-plugin = "9.1.1"
 
-nmcp = "1.6.1"
+nmcp = "1.6.2"
 versions = "0.61.0"
 
 dokka = "2.2.0"
