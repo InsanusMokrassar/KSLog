@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "2.4.10"
-android-gradle-plugin = "9.1.1"
+android-gradle-plugin = "9.4.0"
 
 nmcp = "1.6.1"
 versions = "0.61.0"
