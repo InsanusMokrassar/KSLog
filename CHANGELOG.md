@@ -2,6 +2,11 @@
 
 ## 2.1.0
 
+* `Versions`:
+  * `Kotlin`: `2.4.10` -> `2.4.20`
+  * `com.gradleup.nmcp.aggregation`: `1.6.1` -> `1.6.2`
+  * `io.github.ben-manes.versions`: `0.61.0` -> `0.64.0`
+
 ## 2.0.0
 
 * `Versions`:
