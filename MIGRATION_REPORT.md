@@ -232,11 +232,10 @@ capabilities or an explicitly reviewed compatibility implementation is added.
   that artifact and deploys it to `kdocs`; project/plugin code never runs with a
   write credential.
 - All workflow actions are pinned to resolved commit SHAs.
-- Remote CI execution is intentionally unverified until the branch is pushed.
+- Hosted CI status is reported on [draft PR #136](https://github.com/InsanusMokrassar/KSLog/pull/136); the local evidence above does not imply a hosted pass. SDK setup explicitly requests `platforms;android-37.0` (API 37) and excludes the removed legacy `tools` package.
 
 ## Remote-only checks not performed
 
-- GitHub Actions on an actual hosted runner.
 - Inmo Nexus upload.
 - Maven Central bundle upload/validation/release.
 - GitHub release creation.

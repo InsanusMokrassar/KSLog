@@ -4,6 +4,8 @@
 
 - JDK 17
 - Android SDK platform 37 and build tools 37.0.0
+  (`sdkmanager` package IDs: `platforms;android-37.0` and `build-tools;37.0.0`;
+  the library's `compileSdk` remains 37)
 - Git
 - Bash and Python 3 for the committed compatibility verifiers
 

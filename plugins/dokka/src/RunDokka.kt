@@ -114,8 +114,10 @@ private fun runDokka(
         addAll(analysisClasspaths.jvm)
         val sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
         if (sdkRoot != null) {
-            val androidJar = Path.of(sdkRoot).resolve("platforms/android-37/android.jar")
-            if (Files.isRegularFile(androidJar)) add(androidJar.pathString)
+            val androidJar = listOf("android-37.0", "android-37")
+                .map { Path.of(sdkRoot).resolve("platforms/$it/android.jar") }
+                .firstOrNull { Files.isRegularFile(it) }
+            if (androidJar != null) add(androidJar.pathString)
         }
     }
 
