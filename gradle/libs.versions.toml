@@ -37,6 +37,14 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 github-release = { module = "com.github.breadmoirai:github-release", version.ref = "github-release" }
 
+# Kotlin Toolchain local Dokka plugin
+dokka-cli = { module = "org.jetbrains.dokka:dokka-cli", version.ref = "dokka" }
+dokka-base = { module = "org.jetbrains.dokka:dokka-base", version.ref = "dokka" }
+dokka-analysis-kotlin-descriptors = { module = "org.jetbrains.dokka:analysis-kotlin-descriptors", version.ref = "dokka" }
+dokka-gfm = { module = "org.jetbrains.dokka:gfm-plugin", version.ref = "dokka" }
+kotlinx-html-jvm = "org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0"
+freemarker = "org.freemarker:freemarker:2.3.31"
+
 [plugins]
 
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

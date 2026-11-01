@@ -1,0 +1,9 @@
+tasks:
+  release:
+    action: !dev.inmo.kslog.build.release.githubRelease
+      projectRootDir: ${project.rootDir}
+      settings: ${pluginSettings}
+
+commands:
+  - name: githubRelease
+    performedBy: release

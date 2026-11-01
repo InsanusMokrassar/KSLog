@@ -1,0 +1,3 @@
+*.kt text eol=lf
+kotlin text eol=lf
+kotlin.bat text eol=crlf

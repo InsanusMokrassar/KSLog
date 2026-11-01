@@ -1,0 +1,58 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  KOTLIN_CLI_NO_WELCOME_BANNER: "1"
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+      - name: Install the declared Android SDK
+        run: sdkmanager "platforms;android-37" "build-tools;37.0.0"
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/JetBrains/Kotlin
+          key: kotlin-toolchain-${{ runner.os }}-${{ hashFiles('kotlin', 'kslog/module.yaml', 'project.yaml', 'gradle/libs.versions.toml', 'plugins/**/*.yaml', 'plugins/**/*.kt') }}
+          restore-keys: |
+            kotlin-toolchain-${{ runner.os }}-
+      - name: Check release/version consistency
+        run: |
+          python3 verification/check_release_consistency.py
+          bash verification/test_changelog_parser.sh
+          python3 verification/check_wrapper_line_endings.py
+      - name: Load Kotlin Toolchain model
+        run: ./kotlin show modules
+      - name: Validate Gradle Dokka output overrides
+        run: |
+          ./gradlew --no-daemon help --task dokkaHtml -PDOKKA_PATH="$RUNNER_TEMP/kslog-dokka-property"
+          DOKKA_PATH="$RUNNER_TEMP/kslog-dokka-environment" ./gradlew --no-daemon help --task dokkaHtml
+      - name: Build Kotlin Toolchain targets
+        run: ./kotlin build
+      - name: Run Kotlin Toolchain checks
+        run: ./kotlin check
+      - name: Build the complete retained Gradle fallback
+        run: ./gradlew --no-daemon clean build
+      - name: Verify isolated Gradle publication and consumers
+        run: bash verification/verify_gradle_fallback.sh

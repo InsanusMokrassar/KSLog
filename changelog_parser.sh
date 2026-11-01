@@ -1,21 +1,32 @@
 #!/bin/bash
 
 function parse() {
-    version="$1"
+    local version="$1"
+    local line
+    local found=""
 
-    while IFS= read -r line && [ -z "`echo "$line" | grep -e "^#\+ $version"`" ]
-    do
-        : # do nothing
+    while IFS= read -r line; do
+        if [[ "$line" == "## $version" ]]; then
+            found="yes"
+            break
+        fi
     done
 
-    while IFS= read -r line && [ -z "`echo "$line" | grep -e "^#\+"`" ]
-    do
-        echo "$line"
+    if [[ -z "$found" ]]; then
+        printf 'No literal changelog heading found for %s\n' "$version" >&2
+        return 1
+    fi
+
+    while IFS= read -r line; do
+        if [[ "$line" == \#* ]]; then
+            break
+        fi
+        printf '%s\n' "$line"
     done
 }
 
 version="$1"
-file="$2"
+file="${2:-}"
 
 if [ -n "$file" ]; then
   parse "$version" < "$file"

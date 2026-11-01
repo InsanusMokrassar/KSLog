@@ -1,0 +1,37 @@
+tasks:
+  html:
+    action: !dev.inmo.kslog.build.dokka.dokkaHtml
+      projectRootDir: ${project.rootDir}
+      moduleRootDir: ${module.rootDir}
+      moduleCompileClasspath: ${module.compileClasspath}
+      runtimeClasspath:
+        - $libs.dokka.cli
+      pluginsClasspath:
+        - $libs.dokka.base
+        - $libs.dokka.analysis.kotlin.descriptors
+        - $libs.kotlinx.html.jvm
+        - $libs.freemarker
+      outputDir: ${project.rootDir}/build/dokka/html
+      settings: ${pluginSettings}
+
+  gfm:
+    action: !dev.inmo.kslog.build.dokka.dokkaGfm
+      projectRootDir: ${project.rootDir}
+      moduleRootDir: ${module.rootDir}
+      moduleCompileClasspath: ${module.compileClasspath}
+      runtimeClasspath:
+        - $libs.dokka.cli
+      pluginsClasspath:
+        - $libs.dokka.base
+        - $libs.dokka.analysis.kotlin.descriptors
+        - $libs.dokka.gfm
+        - $libs.kotlinx.html.jvm
+        - $libs.freemarker
+      outputDir: ${project.rootDir}/build/dokka/gfm
+      settings: ${pluginSettings}
+
+commands:
+  - name: dokkaHtml
+    performedBy: html
+  - name: dokkaGfm
+    performedBy: gfm

@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        def testRepository = providers.environmentVariable("KSLOG_TEST_REPOSITORY").orNull
+        if (testRepository == null) {
+            throw new GradleException("KSLOG_TEST_REPOSITORY must point to an isolated Maven repository")
+        }
+        maven { url = uri(testRepository) }
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "kslog-publication-consumer"

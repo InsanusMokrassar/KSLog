@@ -82,20 +82,38 @@ kotlin {
 
     sourceSets {
         commonMain {
+            kotlin.srcDir("kslog/src")
             dependencies {
                 implementation libs.kotlin
             }
         }
         commonTest {
+            kotlin.srcDir("kslog/test")
             dependencies {
                 implementation libs.kotlin.test.common
                 implementation libs.kotlin.test.annotations.common
             }
         }
+        androidMain {
+            kotlin.srcDir("kslog/src@android")
+        }
+        jsMain {
+            kotlin.srcDir("kslog/src@js")
+        }
+        jvmMain {
+            kotlin.srcDir("kslog/src@jvm")
+        }
         jvmTest {
+            kotlin.srcDir("kslog/test@jvm")
             dependencies {
                 implementation libs.kotlin.test.junit
             }
+        }
+        nativeMain {
+            kotlin.srcDir("kslog/src@native")
+        }
+        wasmJsMain {
+            kotlin.srcDir("kslog/src@wasmJs")
         }
     }
 }
