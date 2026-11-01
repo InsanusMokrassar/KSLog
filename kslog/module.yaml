@@ -1,0 +1,119 @@
+product:
+  type: kmp/lib
+  platforms:
+    - android
+    - js
+    - jvm
+    - linuxArm64
+    - linuxX64
+    - mingwX64
+    - wasmJs
+
+description: Simple logging library for kotlin
+
+repositories:
+  - id: mavenLocal
+    url: mavenLocal
+    resolve: false
+    publish: true
+
+plugins:
+  dokka:
+    enabled: true
+    moduleName: KSLog
+    moduleVersion: 2.1.0
+    sourceLinkBaseUrl: https://github.com/InsanusMokrassar/KSLog/blob/master/kslog
+    skipDeprecated: true
+  github-release:
+    enabled: true
+    owner: InsanusMokrassar
+    repository: KSLog
+    version: 2.1.0
+    tagPrefix: v
+    targetCommitish: 2.1.0
+    changelogFile: CHANGELOG.md
+
+settings:
+  android:
+    buildToolsVersion: 37.0.0
+    compileSdk: 37
+    minSdk: 21
+    namespace: dev.inmo.kslog
+  junit: junit-4
+  jvm:
+    jdk:
+      version: 17
+    release: null
+  kotlin:
+    version: 2.4.20
+  publishing:
+    enabled: true
+    group: dev.inmo
+    version: 2.1.0
+    artifactId: kslog
+    signArtifacts: true
+    publishSources: true
+    pom:
+      name: kslog
+      description: Simple logging library for kotlin
+      url: https://github.com/InsanusMokrassar/KSLog
+      scm:
+        url: https://github.com/InsanusMokrassar/KSLog.git
+        developerConnection: scm:git:[fetch=]https://github.com/InsanusMokrassar/KSLog.git[push=]https://github.com/InsanusMokrassar/KSLog.git
+      developers:
+        - id: Akkihi
+          name: Akkihi
+          email: akkihiguy@gmail.com
+        - id: InsanusMokrassar
+          name: InsanusMokrassar
+          email: ovsyannikov.alexey95@gmail.com
+      licenses:
+        - name: MIT License
+          url: https://opensource.org/licenses/MIT
+
+settings@android:
+  kotlin:
+    freeCompilerArgs:
+      - -module-name=dev.inmo_kslog
+      - -jvm-target=17
+
+settings@js:
+  kotlin:
+    freeCompilerArgs:
+      - -Xir-module-name=dev.inmo:kslog
+
+settings@jvm:
+  kotlin:
+    freeCompilerArgs:
+      - -module-name=dev.inmo_kslog
+      - -jvm-target=1.8
+
+settings@linuxArm64:
+  kotlin:
+    freeCompilerArgs:
+      - -module-name=dev.inmo:kslog
+      - -Xshort-module-name=kslog
+
+settings@linuxX64:
+  kotlin:
+    freeCompilerArgs:
+      - -module-name=dev.inmo:kslog
+      - -Xshort-module-name=kslog
+
+settings@mingwX64:
+  kotlin:
+    freeCompilerArgs:
+      - -module-name=dev.inmo:kslog
+      - -Xshort-module-name=kslog
+
+settings@native:
+  kotlin:
+    freeCompilerArgs:
+      - -module-name=dev.inmo:kslog_nativeMain
+      - -Xshort-module-name=kslog_nativeMain
+      - -Xexport-kdoc
+
+settings@wasmJs:
+  kotlin:
+    freeCompilerArgs:
+      - -Xir-module-name=dev.inmo:kslog

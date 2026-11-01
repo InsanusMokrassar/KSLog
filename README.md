@@ -91,3 +91,26 @@ implementation "dev.inmo:kslog:$kslog_version"
   <version>${kslog_version}</version>
 </dependency>
 ```
+
+## Building from source
+
+The checked-in `kotlin`/`kotlin.bat` wrappers pin JetBrains Kotlin Toolchain
+0.13.0. With JDK 17 and Android SDK 37 installed, the main validation commands
+are:
+
+```shell
+./kotlin build
+./kotlin check
+./kotlin do dokkaHtml
+```
+
+Kotlin Toolchain 0.13.0 cannot model the existing `linuxArm32Hfp` target and
+derives `kslog-wasmjs` instead of the released `kslog-wasm-js` artifact ID.
+The Gradle build is retained as a compatibility path until those publication
+contracts can be represented without dropping a target or changing consumer
+coordinates.
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) for target-specific commands, documentation
+generation, and explicitly gated publishing/release procedures. The migration
+inventory and verification evidence are in [MIGRATION_PLAN.md](MIGRATION_PLAN.md)
+and [MIGRATION_REPORT.md](MIGRATION_REPORT.md).

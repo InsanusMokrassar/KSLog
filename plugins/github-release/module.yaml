@@ -1,0 +1,15 @@
+product: jvm/amper-plugin
+
+description: Explicit GitHub release command backed by the standard GitHub CLI.
+
+pluginInfo:
+  id: github-release
+  settingsClass: dev.inmo.kslog.build.release.GitHubReleaseSettings
+
+settings:
+  jvm:
+    jdk:
+      version: 17
+    release: 17
+  kotlin:
+    version: 2.4.20

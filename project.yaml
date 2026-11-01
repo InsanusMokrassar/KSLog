@@ -1,0 +1,8 @@
+modules:
+  - kslog
+  - plugins/dokka
+  - plugins/github-release
+
+plugins:
+  - //plugins/dokka
+  - //plugins/github-release

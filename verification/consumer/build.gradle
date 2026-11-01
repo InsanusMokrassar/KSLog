@@ -1,0 +1,39 @@
+plugins {
+    id "org.jetbrains.kotlin.multiplatform" version "2.4.20"
+    id "com.android.kotlin.multiplatform.library" version "9.1.1"
+}
+
+def externalBuildDir = providers.environmentVariable("KSLOG_CONSUMER_BUILD_DIR").orNull
+if (externalBuildDir != null) {
+    layout.buildDirectory.set(file(externalBuildDir))
+}
+
+kotlin {
+    jvm()
+    js {
+        nodejs()
+    }
+    wasmJs {
+        nodejs()
+    }
+    linuxX64()
+    linuxArm64()
+    mingwX64()
+    android {
+        namespace = "dev.inmo.kslog.verification"
+        compileSdk {
+            version = release(37)
+        }
+        minSdk {
+            version = release(21)
+        }
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation "dev.inmo:kslog:2.1.0"
+            }
+        }
+    }
+}

@@ -1,10 +1,10 @@
 Object callback = {
     switch (true) {
         case project.hasProperty("DOKKA_PATH"):
-            outputDirectory = project.property("DOKKA_PATH").toString()
+            outputDirectory.set(file(project.property("DOKKA_PATH").toString()))
             break
         case System.getenv("DOKKA_PATH") != null:
-            outputDirectory = System.getenv("DOKKA_PATH")
+            outputDirectory.set(file(System.getenv("DOKKA_PATH")))
             break
     }
 
