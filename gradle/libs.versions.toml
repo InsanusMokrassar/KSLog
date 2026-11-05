@@ -6,7 +6,7 @@ android-gradle-plugin = "9.1.1"
 nmcp = "1.6.2"
 versions = "0.64.0"
 
-dokka = "2.2.0"
+dokka = "2.3.0"
 
 dexcount = "4.0.0"
 junit_version = "4.13.2"
